@@ -1,0 +1,24 @@
+<LinearLayout android:id="@+id/linearLayout1"
+	xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/light_bg" android:clickable="true" android:focusable="true">
+    <RelativeLayout android:id="@+id/relativeLayout1" 
+    	android:layout_height="wrap_content" 
+    	android:layout_width="fill_parent">
+        <TextView android:layout_alignParentLeft="true" 
+        	android:layout_width="wrap_content" 
+        	android:layout_height="wrap_content" 
+        	android:layout_centerVertical="true" 
+        	android:text="Symbol" 
+        	android:padding="10dp" 
+        	android:textColor="#000000" 
+        	android:textSize="18dp" 
+        	android:textStyle="bold" android:id="@+id/txtSymbol"></TextView>
+        <RelativeLayout android:layout_width="wrap_content" android:id="@+id/relativeLayout2" android:layout_alignParentRight="true" android:layout_height="wrap_content" android:layout_centerVertical="true" android:padding="5dp">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/green" android:layout_centerVertical="true" android:id="@+id/imgDirection"></ImageView>
+            <LinearLayout android:id="@+id/linearLayout2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:layout_centerHorizontal="true" android:layout_centerInParent="true">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#FFFFFF" android:text="UP" android:textStyle="bold" android:id="@+id/txtDirection" android:layout_gravity="center_horizontal"></TextView>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#FFFFFF" android:text="100%" android:textStyle="bold" android:id="@+id/txtPercentage" android:layout_gravity="center_horizontal"></TextView>
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+    <FrameLayout android:id="@+id/frameLayout1" android:background="#000000" android:layout_width="fill_parent" android:layout_height="1px"></FrameLayout>
+</LinearLayout>

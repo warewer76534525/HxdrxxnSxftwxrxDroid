@@ -1,0 +1,11 @@
+<LinearLayout android:id="@+id/linearLayout1"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:background="#F5F5F5">
+    <FrameLayout android:id="@+id/frameLayout1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:background="#000000">
+        <TextView android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Signal" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="20dp" android:layout_gravity="center" android:padding="5dp"></TextView>
+    </FrameLayout>
+    <ScrollView android:layout_width="match_parent" android:id="@+id/scrollView1" android:layout_height="wrap_content">
+        <LinearLayout android:layout_width="fill_parent" android:id="@+id/signalListLayout" android:layout_height="fill_parent" android:orientation="vertical"></LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
