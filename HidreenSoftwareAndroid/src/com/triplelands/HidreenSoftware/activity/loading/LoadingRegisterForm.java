@@ -5,28 +5,25 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
+
+import com.triplelands.HidreenSoftware.activity.RegisterActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.triplelands.HidreenSoftware.model.Category;
-import com.triplelands.HidreenSoftware.utils.DataProcessor;
+public class LoadingRegisterForm extends InvokeHttpGetConnection {
 
-public class LoadingListSignals extends InvokeHttpGetConnection {
 	private String url;
-
+	
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		Bundle bundle = getIntent().getExtras();
-		if (bundle != null) {
-			url = bundle.getString("url");
-			super.onCreate(savedInstanceState, url);
-		}
+		url = getIntent().getExtras().getString("url");
+		super.onCreate(savedInstanceState, url);
 	}
-
+	
+	@Override
 	public void onReceivedResponse(InputStream is, int length) {
-		System.out.println("received response");
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(is,"UTF-8"),8);
 			StringBuilder sb = new StringBuilder();
@@ -38,12 +35,10 @@ public class LoadingListSignals extends InvokeHttpGetConnection {
 	        String data = sb.toString();
 	        Log.i("HS", data);
 	        
-	        ArrayList<Category> categories = (ArrayList<Category>) DataProcessor.getCategoryList(data);
+	        Intent i = new Intent(this, RegisterActivity.class);
+	        i.putExtra("json", data);
+	        startActivity(i);
 	        
-	        Intent resultIntent = new Intent();
-			resultIntent.putExtra("categories", categories);
-			setResult(RESULT_OK, resultIntent);
-			
 		} catch (UnsupportedEncodingException e) {
 			Log.e("ERROR", e.getMessage());
 			e.printStackTrace();
@@ -51,6 +46,7 @@ public class LoadingListSignals extends InvokeHttpGetConnection {
 			Log.e("ERROR", e.getMessage());
 			e.printStackTrace();
 		}
+        
 		super.onReceivedResponse(is, length);
 		finish();
 	}

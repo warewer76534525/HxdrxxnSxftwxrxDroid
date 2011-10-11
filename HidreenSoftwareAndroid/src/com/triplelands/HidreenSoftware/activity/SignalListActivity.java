@@ -18,7 +18,7 @@ import com.triplelands.HidreenSoftware.viewcomponent.TitleLabel;
 
 public class SignalListActivity extends RoboActivity {
 
-	private final String URL_SIGNALS = "http://www.hidreensoftware.com/index.php/m/signals";
+	public static final String URL_SIGNALS = "http://hidreensoftware.com/index.php/m/signals";
 	
 	@InjectView(R.id.signalListLayout) LinearLayout listSignalLayout;
 

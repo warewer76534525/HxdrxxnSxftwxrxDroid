@@ -1,17 +1,20 @@
 package com.triplelands.HidreenSoftware.viewcomponent;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.triplelands.HidreenSoftware.R;
+import com.triplelands.HidreenSoftware.activity.SignalListActivity;
+import com.triplelands.HidreenSoftware.activity.loading.LoadingSignalDetail;
 import com.triplelands.HidreenSoftware.model.Signal;
 
 public class SignalListRow extends LinearLayout {
 	
-	public SignalListRow(Context context, Signal signal) {
+	public SignalListRow(final Context context, final Signal signal) {
 		super(context);
 		this.setOrientation(VERTICAL);
 		
@@ -30,6 +33,15 @@ public class SignalListRow extends LinearLayout {
 		imgDirection.setImageResource((signal.isUp()) ? R.drawable.green : R.drawable.red);
 		
 		addView(v);
+		
+		v.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				System.out.println("Clicked: " + signal.getSymbol());
+				Intent i = new Intent(context, LoadingSignalDetail.class);
+				i.putExtra("url", SignalListActivity.URL_SIGNALS + "/view/" + signal.getId());
+				context.startActivity(i);
+			}
+		});
 	}
-	
 }
