@@ -1,7 +1,7 @@
 
     <LinearLayout android:id="@+id/linearLayout1" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android" android:background="@drawable/white_gradation" android:orientation="vertical">
         <LinearLayout android:id="@+id/linearLayout4" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/black_gradiation" android:orientation="vertical">
-            <TextView android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20dp" android:typeface="monospace" android:textStyle="bold" android:textColor="#FFFFFF" android:text="HIDREEN" android:padding="10dp" android:gravity="center" android:layout_gravity="center"></TextView>
+            <TextView android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20dp" android:textStyle="bold" android:textColor="#FFFFFF" android:padding="10dp" android:gravity="center" android:layout_gravity="center" android:text="AmygdalaHD" android:typeface="serif"></TextView>
         </LinearLayout>
         <ScrollView android:layout_height="wrap_content" android:id="@+id/scrollView1" android:layout_width="fill_parent">
             <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout3" android:layout_width="match_parent" android:orientation="vertical">
@@ -9,10 +9,10 @@
                     <TextView android:id="@+id/textView3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textStyle="bold" android:textSize="18dp" android:textColor="#000000" android:text="Please Login" android:typeface="monospace" android:layout_gravity="center" android:padding="10dp"></TextView>
                 </LinearLayout>
                 <FrameLayout android:padding="10dp" android:id="@+id/frameLayout1" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <EditText android:id="@+id/editText1" android:layout_width="fill_parent" android:hint="Email" android:layout_height="wrap_content" android:inputType="textEmailAddress"></EditText>
+                    <EditText android:layout_width="fill_parent" android:hint="Email" android:layout_height="wrap_content" android:inputType="textEmailAddress" android:id="@+id/txtEmailLogin"></EditText>
                 </FrameLayout>
                 <FrameLayout android:padding="10dp" android:id="@+id/frameLayout2" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <EditText android:inputType="textPassword" android:id="@+id/editText2" android:layout_width="fill_parent" android:hint="Password" android:layout_height="wrap_content"></EditText>
+                    <EditText android:inputType="textPassword" android:layout_width="fill_parent" android:hint="Password" android:layout_height="wrap_content" android:id="@+id/txtPasswordLogin"></EditText>
                 </FrameLayout>
                 <LinearLayout android:id="@+id/linearLayout2" android:layout_width="match_parent" android:layout_height="wrap_content">
                     <FrameLayout android:layout_weight="1" android:padding="5dp" android:id="@+id/frameLayout3" android:layout_width="fill_parent" android:layout_height="match_parent">
@@ -23,7 +23,7 @@
                     </FrameLayout>
                 </LinearLayout>
                 <FrameLayout android:id="@+id/frameLayout5" android:layout_width="match_parent" android:layout_height="wrap_content">
-                    <TextView android:id="@+id/textView1" android:layout_height="wrap_content" android:padding="10dp" android:layout_width="fill_parent" android:textColor="#000000" android:text="With the same Email and Password, you can use the web application in www.hidreensoftware.com"></TextView>
+                    <TextView android:id="@+id/textView1" android:layout_height="wrap_content" android:padding="10dp" android:layout_width="fill_parent" android:textColor="#000000" android:text="With the same Email and Password, you can use the web application at www.amygdalahd.com"></TextView>
                 </FrameLayout>
             </LinearLayout>
         </ScrollView>

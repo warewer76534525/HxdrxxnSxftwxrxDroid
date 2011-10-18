@@ -13,7 +13,7 @@ public class UploadingToServer extends InvokeHttpPostConnection {
 		if (bundle != null) {
 			url = bundle.getString("url");
 			params = bundle.getStringArray("parameter");
-			super.onCreate(savedInstanceState, url, params, false);
+			super.onCreate(savedInstanceState, url, params);
 		}
 	}
 

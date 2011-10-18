@@ -7,6 +7,9 @@ import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.triplelands.HidreenSoftware.R;
@@ -21,12 +24,23 @@ public class SignalListActivity extends RoboActivity {
 	public static final String URL_SIGNALS = "http://hidreensoftware.com/index.php/m/signals";
 	
 	@InjectView(R.id.signalListLayout) LinearLayout listSignalLayout;
+	@InjectView(R.id.btnRefreshSignals) ImageButton btnRefreshSignals;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.signal_list);
 		
+		btnRefreshSignals.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				loadSignalsData();
+			}
+		});
+		
+		loadSignalsData();
+	}
+	
+	private void loadSignalsData(){
 		Intent i = new Intent(this, LoadingListSignals.class);
 		i.putExtra("url", URL_SIGNALS);
 		startActivityForResult(i, 0);
@@ -37,6 +51,7 @@ public class SignalListActivity extends RoboActivity {
 		super.onActivityResult(requestCode, resultCode, data);
 		
 		if (resultCode == RESULT_OK) {
+			listSignalLayout.removeAllViews();
 			@SuppressWarnings("unchecked")
 			ArrayList<Category> cats = (ArrayList<Category>) data.getExtras().getSerializable("categories");
 			System.out.println("size: " + cats.size());

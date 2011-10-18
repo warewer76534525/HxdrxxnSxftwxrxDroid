@@ -2,7 +2,7 @@ package com.triplelands.HidreenSoftware.activity.loading;
 
 import java.io.InputStream;
 
-import android.app.Activity;
+import roboguice.activity.RoboActivity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -13,18 +13,18 @@ import android.os.Looper;
 import com.triplelands.HidreenSoftware.tools.InternetConnection;
 import com.triplelands.HidreenSoftware.tools.InternetConnectionHandler;
 
-public abstract class InvokeHttpPostConnection extends Activity implements InternetConnectionHandler {
+public abstract class InvokeHttpPostConnection extends RoboActivity implements InternetConnectionHandler {
 	private InternetConnection internetConnection;
 	private int idProgressDialog = 1;
 	private Thread invokingThread;
 	private ProgressDialog loadingDialog;
 	
-	protected void onCreate(Bundle savedInstanceState, String url, String[] params, boolean disableEncrypt) {
+	protected void onCreate(Bundle savedInstanceState, String url, String[] params) {
 		super.onCreate(savedInstanceState);
 //		Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler(this));
 		
 		if(url != null){
-			uploadParam(url, params, disableEncrypt);
+			uploadParam(url, params);
 			url = null;
 		}else{
 			finish();
@@ -71,7 +71,7 @@ public abstract class InvokeHttpPostConnection extends Activity implements Inter
 		Looper.loop();
 	}
 	
-	private void uploadParam(final String urlInvoke, final String[] params, final boolean disableEncrypt){
+	private void uploadParam(final String urlInvoke, final String[] params){
 		if(loadingDialog == null){
 			showDialog(idProgressDialog);
 			
@@ -80,7 +80,7 @@ public abstract class InvokeHttpPostConnection extends Activity implements Inter
 			internetConnection = new InternetConnection(this);
 			invokingThread = new Thread(new Runnable() {
 				public void run() {
-					internetConnection.postData(urlInvoke, params, disableEncrypt);
+					internetConnection.postData(urlInvoke, params);
 				}
 			});
 			invokingThread.setPriority(Thread.MAX_PRIORITY);

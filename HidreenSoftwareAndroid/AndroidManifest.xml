@@ -22,10 +22,15 @@
         <activity android:name=".activity.RegisterActivity" android:theme="@android:style/Theme.NoTitleBar"/>
 		<activity android:name=".activity.SignalListActivity" android:theme="@android:style/Theme.NoTitleBar"/>
 		<activity android:name=".activity.NewsListActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+		<activity android:name=".activity.FeedContentListActivity" android:theme="@android:style/Theme.NoTitleBar"/>
 		<activity android:name=".activity.SignalDetailActivity" android:theme="@android:style/Theme.NoTitleBar"/>
 		<activity android:name=".activity.ImageViewerActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+		<activity android:name=".activity.NewsViewerActivity"/>
+		<activity android:name=".activity.loading.LoadingNewsList" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+		<activity android:name=".activity.loading.LoadingFeedContent" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
     	<activity android:name=".activity.loading.LoadingListSignals" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
     	<activity android:name=".activity.loading.LoadingSignalDetail" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
     	<activity android:name=".activity.loading.LoadingRegisterForm" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+    	<activity android:name=".activity.loading.LoginPost" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
     </application>
 </manifest>

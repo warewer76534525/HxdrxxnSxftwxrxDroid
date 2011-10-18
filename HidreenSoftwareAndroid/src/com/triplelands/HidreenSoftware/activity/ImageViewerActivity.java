@@ -19,5 +19,7 @@ public class ImageViewerActivity extends RoboActivity {
 		String path = getIntent().getExtras().getString("path");
 		
 		wvImageViewer.loadUrl("file://" + path);
+		wvImageViewer.getSettings().setSupportZoom(true);
+		wvImageViewer.getSettings().setBuiltInZoomControls(true);
 	}
 }

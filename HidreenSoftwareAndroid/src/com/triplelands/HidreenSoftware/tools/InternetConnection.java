@@ -141,7 +141,7 @@ public class InternetConnection {
 		}
 	}
 
-	public void postData(String url, String[] params, boolean disableEncrypt) {
+	public void postData(String url, String[] params) {
 
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpPost httppost = new HttpPost(url);

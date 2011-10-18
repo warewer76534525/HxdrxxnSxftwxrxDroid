@@ -2,7 +2,7 @@ package com.triplelands.HidreenSoftware.activity.loading;
 
 import java.io.InputStream;
 
-import android.app.Activity;
+import roboguice.activity.RoboActivity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -14,7 +14,7 @@ import android.os.Looper;
 import com.triplelands.HidreenSoftware.tools.InternetConnection;
 import com.triplelands.HidreenSoftware.tools.InternetConnectionHandler;
 
-public abstract class InvokeHttpGetConnection extends Activity implements InternetConnectionHandler {
+public abstract class InvokeHttpGetConnection extends RoboActivity implements InternetConnectionHandler {
 	
 	private InternetConnection internetConnection;
 //	private String url;
