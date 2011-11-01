@@ -9,8 +9,11 @@ import java.util.ArrayList;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Looper;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.triplelands.HidreenSoftware.app.DataManager;
 import com.triplelands.HidreenSoftware.model.Category;
 import com.triplelands.HidreenSoftware.utils.DataProcessor;
 
@@ -38,12 +41,20 @@ public class LoadingListSignals extends InvokeHttpGetConnection {
 	        String data = sb.toString();
 	        Log.i("HS", data);
 	        
-	        ArrayList<Category> categories = (ArrayList<Category>) DataProcessor.getCategoryList(data);
-	        
-	        Intent resultIntent = new Intent();
-			resultIntent.putExtra("categories", categories);
-			setResult(RESULT_OK, resultIntent);
-			
+	        if (DataProcessor.getResponseStatus(data).equals("0")) {
+	        	Looper.prepare();
+	        	Toast.makeText(this, DataProcessor.getResponseMessage(data), Toast.LENGTH_SHORT).show();
+	        	DataManager.getInstance(this).clearAllHistory();
+				DataManager.getInstance(this).setSessionId("");
+				finish();
+				Looper.loop();
+			} else {
+				ArrayList<Category> categories = (ArrayList<Category>) DataProcessor.getCategoryList(data);
+		        
+		        Intent resultIntent = new Intent();
+				resultIntent.putExtra("categories", categories);
+				setResult(RESULT_OK, resultIntent);
+			}
 		} catch (UnsupportedEncodingException e) {
 			Log.e("ERROR", e.getMessage());
 			e.printStackTrace();

@@ -13,8 +13,9 @@ public class Signal implements Serializable {
 	private String direction;
 	private double probability;
 	private int comment;
+	private String viewed;
 	
-	public Signal(int id, String time, String category, String method, String pattern, String symbol, String direction, double probability, int comment){
+	public Signal(int id, String time, String category, String method, String pattern, String symbol, String direction, double probability, int comment, String viewed){
 		this.id = id;
 		this.time = time;
 		this.category = category;
@@ -24,6 +25,7 @@ public class Signal implements Serializable {
 		this.direction = direction;
 		this.probability = probability;
 		this.comment = comment;
+		this.viewed = viewed;
 	}
 
 	public int getId() {
@@ -64,5 +66,9 @@ public class Signal implements Serializable {
 
 	public boolean isUp(){
 		return (!direction.trim().toLowerCase().equals("down"));
+	}
+	
+	public boolean isUnread(){
+		return viewed.equals("1");
 	}
 }

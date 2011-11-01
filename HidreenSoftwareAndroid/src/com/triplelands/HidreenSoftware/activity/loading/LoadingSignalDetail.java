@@ -11,9 +11,13 @@ import java.util.List;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Looper;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.triplelands.HidreenSoftware.activity.SignalDetailActivity;
+import com.triplelands.HidreenSoftware.app.DataManager;
+import com.triplelands.HidreenSoftware.model.EconomicCalendar;
 import com.triplelands.HidreenSoftware.model.Signal;
 import com.triplelands.HidreenSoftware.tools.ImageDownloaderUtility;
 import com.triplelands.HidreenSoftware.tools.ImageLoadingHandler;
@@ -23,6 +27,7 @@ public class LoadingSignalDetail extends InvokeHttpGetConnection implements Imag
 	private String url;
 	private Signal receivedSignal;
 	private String receivedMetaSignal;
+	private ArrayList<EconomicCalendar> listEcocals;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		Bundle bundle = getIntent().getExtras();
@@ -45,12 +50,31 @@ public class LoadingSignalDetail extends InvokeHttpGetConnection implements Imag
 	        String data = sb.toString();
 	        Log.i("HS Signal Detail", data);
 			
-	        receivedSignal = DataProcessor.getSignalDetail(data);
-	        receivedMetaSignal = DataProcessor.getMetaSignal(data);
-	        String urls[] = DataProcessor.getImageUrls(data);
-	        
-	        ImageDownloaderUtility downloader = new ImageDownloaderUtility(this, urls, this);
-	        downloader.start();
+	        if (DataProcessor.getResponseStatus(data).equals("0")) {
+	        	Looper.prepare();
+	        	Toast.makeText(this, DataProcessor.getResponseMessage(data), Toast.LENGTH_SHORT).show();
+	        	DataManager.getInstance(this).clearAllHistory();
+				DataManager.getInstance(this).setSessionId("");
+				finish();
+				Looper.loop();
+			} else {
+				receivedSignal = DataProcessor.getSignalDetail(data);
+		        receivedMetaSignal = DataProcessor.getMetaSignal(data);
+		        listEcocals = (ArrayList<EconomicCalendar>) DataProcessor.getEconomicCalendarList(data);
+		        String urls[] = DataProcessor.getImageUrls(data);
+		 		        
+		        if (urls.length > 0) {
+		        	ImageDownloaderUtility downloader = new ImageDownloaderUtility(this, urls, this);
+			        downloader.start();
+				} else {
+					Intent i = new Intent(this, SignalDetailActivity.class);
+			        i.putExtra("signal", receivedSignal);
+			        i.putExtra("metaSignal", receivedMetaSignal);
+			        i.putExtra("ecocal", listEcocals);
+					startActivity(i);
+					finish();
+				}
+			}
 			
 		} catch (UnsupportedEncodingException e) {
 			Log.e("ERROR", e.getMessage());
@@ -65,7 +89,7 @@ public class LoadingSignalDetail extends InvokeHttpGetConnection implements Imag
 	@Override
 	public void onReceivedImages(List<Bitmap> images) {
 		Intent i = new Intent(this, SignalDetailActivity.class);
-        i.putExtra("signal", receivedSignal);
+        i.putExtra("signal", receivedSignal);i.putExtra("ecocal", listEcocals);
         i.putExtra("metaSignal", receivedMetaSignal);
         i.putExtra("images", (ArrayList<Bitmap>)images);
 		startActivity(i);

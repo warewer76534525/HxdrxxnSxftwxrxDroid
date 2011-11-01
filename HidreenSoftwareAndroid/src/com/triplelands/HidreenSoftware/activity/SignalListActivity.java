@@ -21,7 +21,7 @@ import com.triplelands.HidreenSoftware.viewcomponent.TitleLabel;
 
 public class SignalListActivity extends RoboActivity {
 
-	public static final String URL_SIGNALS = "http://hidreensoftware.com/index.php/m/signals";
+	public static final String URL_SIGNALS = "http://amygdalahd.com/index.php/m/signals";
 	
 	@InjectView(R.id.signalListLayout) LinearLayout listSignalLayout;
 	@InjectView(R.id.btnRefreshSignals) ImageButton btnRefreshSignals;
@@ -51,17 +51,21 @@ public class SignalListActivity extends RoboActivity {
 		super.onActivityResult(requestCode, resultCode, data);
 		
 		if (resultCode == RESULT_OK) {
-			listSignalLayout.removeAllViews();
-			@SuppressWarnings("unchecked")
-			ArrayList<Category> cats = (ArrayList<Category>) data.getExtras().getSerializable("categories");
-			System.out.println("size: " + cats.size());
-			for (int i = 0; i < cats.size(); i++) {
-				listSignalLayout.addView(new TitleLabel(this, cats.get(i).getName()));
-				List<Signal> signals = cats.get(i).getSignals();
-				for (int j = 0; j < signals.size(); j++) {
-					listSignalLayout.addView(new SignalListRow(this, signals.get(j)));
+			try {
+				listSignalLayout.removeAllViews();
+				@SuppressWarnings("unchecked")
+				ArrayList<Category> cats = (ArrayList<Category>) data.getExtras().getSerializable("categories");
+				System.out.println("size: " + cats.size());
+				for (int i = 0; i < cats.size(); i++) {
+					listSignalLayout.addView(new TitleLabel(this, cats.get(i).getName()));
+					List<Signal> signals = cats.get(i).getSignals();
+					for (int j = 0; j < signals.size(); j++) {
+						listSignalLayout.addView(new SignalListRow(this, signals.get(j)));
+					}
 				}
+			} catch (Exception e) {
 			}
+			
 		}
 	}
 }

@@ -9,9 +9,12 @@ import java.util.ArrayList;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Looper;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.triplelands.HidreenSoftware.activity.FeedContentListActivity;
+import com.triplelands.HidreenSoftware.app.DataManager;
 import com.triplelands.HidreenSoftware.model.FeedContent;
 import com.triplelands.HidreenSoftware.utils.DataProcessor;
 
@@ -41,12 +44,21 @@ public class LoadingFeedContent extends InvokeHttpGetConnection {
 	        String data = sb.toString();
 	        Log.i("HS", data);
 	        
-	        ArrayList<FeedContent> contents = (ArrayList<FeedContent>) DataProcessor.getNewsFeedContents(data);
-	        
-	        Intent i = new Intent(this, FeedContentListActivity.class);
-	        i.putExtra("contents", contents);
-	        i.putExtra("title", title);
-	        startActivity(i);
+	        if (DataProcessor.getResponseStatus(data).equals("0")) {
+	        	Looper.prepare();
+	        	Toast.makeText(this, DataProcessor.getResponseMessage(data), Toast.LENGTH_SHORT).show();
+	        	DataManager.getInstance(this).clearAllHistory();
+				DataManager.getInstance(this).setSessionId("");
+				finish();
+				Looper.loop();
+			} else {
+				ArrayList<FeedContent> contents = (ArrayList<FeedContent>) DataProcessor.getNewsFeedContents(data);
+		        
+		        Intent i = new Intent(this, FeedContentListActivity.class);
+		        i.putExtra("contents", contents);
+		        i.putExtra("title", title);
+		        startActivity(i);
+			}
 			
 		} catch (UnsupportedEncodingException e) {
 			Log.e("ERROR", e.getMessage());

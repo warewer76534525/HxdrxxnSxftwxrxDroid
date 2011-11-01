@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.triplelands.HidreenSoftware.R;
+import com.triplelands.HidreenSoftware.app.DataManager;
 import com.triplelands.HidreenSoftware.model.FeedContent;
 import com.triplelands.HidreenSoftware.viewcomponent.FeedContentAdapter;
 
@@ -26,6 +27,8 @@ public class FeedContentListActivity extends RoboActivity {
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.feed_contents_list);
+		
+		DataManager.getInstance(this).addHistory(this);
 		
 		@SuppressWarnings("unchecked")
 		List<FeedContent> contents = (ArrayList<FeedContent>)getIntent().getExtras().getSerializable("contents");

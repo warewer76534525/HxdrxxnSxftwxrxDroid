@@ -1,0 +1,8 @@
+<TextView android:text="@+id/TextView01"
+	android:id="@+id/txtSpinnerText"
+	android:layout_height="wrap_content"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:textColor="#000000"
+	android:padding="5dp">
+</TextView>

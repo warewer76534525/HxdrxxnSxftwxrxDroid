@@ -19,8 +19,11 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
+import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
+
+import com.triplelands.HidreenSoftware.app.DataManager;
 
 public class InternetConnection {
 	
@@ -28,9 +31,11 @@ public class InternetConnection {
 	private URLConnection conn;
 	private HttpURLConnection httpConn;
 	private InputStream is;
+	private DataManager manager;
 
-	public InternetConnection(InternetConnectionHandler listener) {
+	public InternetConnection(Context ctx, InternetConnectionHandler listener) {
 		this.listener = listener;
+		manager = DataManager.getInstance(ctx);
 	}
 
 //	public void setAndAccessURL(String url) {
@@ -65,30 +70,14 @@ public class InternetConnection {
 
 			if (!(conn instanceof HttpURLConnection))
 				throw new IOException("Not an HTTP connection");
-
+			
 			HttpURLConnection httpConn = (HttpURLConnection) conn;
 			httpConn.setAllowUserInteraction(false);
 			httpConn.setInstanceFollowRedirects(true);
 			httpConn.setRequestMethod("GET");
-
-//			conn.setRequestProperty("User-Agent", DeviceInfo.USER_AGENT);
-//			conn.setRequestProperty("MDN", DeviceInfo.getPhoneNumber());
-//			AppConfigRepository appConfigRepository = new AppConfigRepository(
-//					context);
-//			appConfigRepository.open();
-
-//			conn.setRequestProperty("GUID", appConfigRepository.getGuid());
-//			if (appConfigRepository.getLang() != null) {
-//				conn.setRequestProperty("LANG", appConfigRepository.getLang());
-//			} else {
-//				conn.setRequestProperty("LANG", "");
-//			}
-//			if (appConfigRepository.hasSessionId()) {
-//				System.out.println("SESSION ID GET: " + appConfigRepository.getSessionId());
-//				conn.setRequestProperty("SESSID", appConfigRepository
-//						.getSessionId());
-//			}
-//			appConfigRepository.close();
+			conn.setRequestProperty("Cookie",
+					"UA=hisoftAndroid; HSSession=" + manager.getSessionId() + "; HSEmail="
+							+ manager.getEmail());
 
 			httpConn.setConnectTimeout(60000);
 			httpConn.connect();
@@ -170,17 +159,8 @@ public class InternetConnection {
 
 			httppost.addHeader("Content-Type",
 					"application/x-www-form-urlencoded");
-//			httppost.addHeader("MDN", DeviceInfo.getPhoneNumber());
-//			httppost.addHeader("GUID", repo.getGuid());
-//			if (repo.getLang() != null) {
-//				httppost.addHeader("LANG", repo.getLang());
-//			} else {
-//				httppost.addHeader("LANG", "");
-//			}
-//			if (repo.hasSessionId()) {
-//				httppost.addHeader("SESSID", repo.getSessionId());
-//			}
-//			repo.close();
+			httppost.setHeader("Cookie", "UA=hisoftAndroid; HSSession=" + manager.getSessionId() + "; HSEmail="
+					+ manager.getEmail());
 
 			HttpResponse response = httpclient.execute(httppost);
 

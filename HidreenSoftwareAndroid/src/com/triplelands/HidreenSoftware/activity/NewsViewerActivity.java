@@ -15,7 +15,7 @@ public class NewsViewerActivity extends RoboActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.news_viewer);
 		
-		setTitle("Displaying news");
+		setTitle("Displaying news...");
 		
 		String url = getIntent().getExtras().getString("url");
 		wvNews.loadUrl(url);

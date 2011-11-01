@@ -1,0 +1,22 @@
+
+    <LinearLayout android:id="@+id/linearLayout1" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical">
+        <LinearLayout android:id="@+id/linearLayout2" android:layout_height="wrap_content" android:layout_width="fill_parent" android:padding="5dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="SYM" android:textStyle="bold" android:paddingRight="10dp" android:id="@+id/txtCalSym" android:textColor="#0000FF"></TextView>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingRight="10dp" android:text="time and timezone" android:id="@+id/txtCalTime" android:textColor="#000000"></TextView>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:id="@+id/txtCalImportance" android:text="imp" android:textStyle="bold" android:textSize="13dp"></TextView>
+            <TextView android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" importance" android:textColor="#000000"></TextView>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/linearLayout3" android:layout_height="wrap_content" android:layout_width="fill_parent" android:padding="5dp">
+            <ImageView android:layout_height="wrap_content" android:layout_width="wrap_content" android:paddingRight="5dp" android:layout_gravity="center_vertical" android:id="@+id/imgFlag"></ImageView>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:text="Description" android:id="@+id/txtCalDesc" android:layout_gravity="center_vertical"></TextView>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/linearLayout4" android:layout_height="wrap_content" android:layout_width="match_parent" android:padding="5dp">
+            <TextView android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Forecast: " android:textColor="#000000"></TextView>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingRight="5dp" android:id="@+id/txtCalForecast" android:text="f" android:textStyle="bold" android:textColor="#000000"></TextView>
+            <TextView android:id="@+id/textView3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Previous: " android:textColor="#000000"></TextView>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingRight="5dp" android:id="@+id/txtCalPrev" android:text="p" android:textStyle="bold" android:textColor="#000000"></TextView>
+            <TextView android:id="@+id/textView4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Actual: " android:textColor="#000000"></TextView>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingRight="5dp" android:id="@+id/txtCalActual" android:text="a" android:textStyle="bold" android:textColor="#000000"></TextView>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/linearLayout5" android:layout_width="fill_parent" android:layout_height="1dp" android:background="#000000"></LinearLayout>
+    </LinearLayout>

@@ -25,7 +25,7 @@ public class NewsListActivity extends RoboActivity {
 	@InjectView(R.id.lvNews) ListView lvNews;
 	@InjectView(R.id.btnRefreshFeed) ImageButton btnRefreshFeeds;
 	
-	public static final String URL_NEWS_FEED = "http://hidreensoftware.com/m/rss/index";
+	public static final String URL_NEWS_FEED = "http://amygdalahd.com/m/rss/index";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +44,7 @@ public class NewsListActivity extends RoboActivity {
 			public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
 				String feedId = ((NewsFeed)view.getTag()).getId();
 				Intent i = new Intent(NewsListActivity.this, LoadingFeedContent.class);
-				i.putExtra("url", "http://hidreensoftware.com/m/rss/site/" + feedId);
+				i.putExtra("url", "http://amygdalahd.com/m/rss/site/" + feedId);
 				i.putExtra("title", ((NewsFeed)view.getTag()).getName());
 				startActivity(i);
 			}

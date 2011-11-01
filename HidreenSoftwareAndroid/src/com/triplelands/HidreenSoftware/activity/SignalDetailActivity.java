@@ -12,7 +12,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.triplelands.HidreenSoftware.R;
+import com.triplelands.HidreenSoftware.app.DataManager;
+import com.triplelands.HidreenSoftware.model.EconomicCalendar;
 import com.triplelands.HidreenSoftware.model.Signal;
+import com.triplelands.HidreenSoftware.viewcomponent.EconomicCalendarLayout;
 import com.triplelands.HidreenSoftware.viewcomponent.ImageChartScrollViewer;
 
 public class SignalDetailActivity extends RoboActivity {
@@ -21,26 +24,29 @@ public class SignalDetailActivity extends RoboActivity {
 	@InjectView(R.id.txtDetailSignal) TextView txtDetail;
 	@InjectView(R.id.layoutDetailSignal) LinearLayout layoutDetailSignal;
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.signal_detail);
 		
+		DataManager.getInstance(this).addHistory(this);
+		
 		Signal signal = (Signal) getIntent().getExtras().getSerializable("signal");
 		String metaSignal = getIntent().getExtras().getString("metaSignal");
-		@SuppressWarnings("unchecked")
-		List<Bitmap> images = (ArrayList<Bitmap>) getIntent().getExtras().getSerializable("images");
-		
 		txtTitleDetail.setText(signal.getSymbol());
 		txtDetail.setText(Html.fromHtml(metaSignal.replaceAll("\n", "<br/>")));
 		
-//		InputStream is = this.getResources().openRawResource (R.drawable.jaka);
-//		Bitmap img = ImageUtils.resizeImage(is, 300, 200);
-//		
-//		List<Bitmap> imgs = new ArrayList<Bitmap>();
-//		imgs.add(img);
-//		imgs.add(img);
+		//images
+		List<Bitmap> images = (ArrayList<Bitmap>) getIntent().getExtras().getSerializable("images");
+		if (images != null && images.size() > 0) {
+			layoutDetailSignal.addView(new ImageChartScrollViewer(this, images));
+		}
 		
-		layoutDetailSignal.addView(new ImageChartScrollViewer(this, images));
+		//economic calendars
+		List<EconomicCalendar> ecocals = (ArrayList<EconomicCalendar>) getIntent().getExtras().getSerializable("ecocal");
+		if (ecocals != null && ecocals.size() > 0) {
+			layoutDetailSignal.addView(new EconomicCalendarLayout(this, "Economic Calendar", ecocals));
+		}
 	}
 }

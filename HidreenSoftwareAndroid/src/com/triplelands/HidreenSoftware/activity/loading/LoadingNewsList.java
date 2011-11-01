@@ -9,8 +9,11 @@ import java.util.ArrayList;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Looper;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.triplelands.HidreenSoftware.app.DataManager;
 import com.triplelands.HidreenSoftware.model.NewsFeed;
 import com.triplelands.HidreenSoftware.utils.DataProcessor;
 
@@ -38,12 +41,20 @@ public class LoadingNewsList extends InvokeHttpGetConnection {
 	        String data = sb.toString();
 	        Log.i("HS", data);
 	        
-	        ArrayList<NewsFeed> feeds = (ArrayList<NewsFeed>) DataProcessor.getNewsFeedList(data);
-	        
-	        Intent resultIntent = new Intent();
-			resultIntent.putExtra("feeds", feeds);
-			setResult(RESULT_OK, resultIntent);
-			
+	        if (DataProcessor.getResponseStatus(data).equals("0")) {
+	        	Looper.prepare();
+	        	Toast.makeText(this, DataProcessor.getResponseMessage(data), Toast.LENGTH_SHORT).show();
+	        	DataManager.getInstance(this).clearAllHistory();
+				DataManager.getInstance(this).setSessionId("");
+				finish();
+				Looper.loop();
+			} else {
+				ArrayList<NewsFeed> feeds = (ArrayList<NewsFeed>) DataProcessor.getNewsFeedList(data);
+		        
+		        Intent resultIntent = new Intent();
+				resultIntent.putExtra("feeds", feeds);
+				setResult(RESULT_OK, resultIntent);
+			}
 		} catch (UnsupportedEncodingException e) {
 			Log.e("ERROR", e.getMessage());
 			e.printStackTrace();

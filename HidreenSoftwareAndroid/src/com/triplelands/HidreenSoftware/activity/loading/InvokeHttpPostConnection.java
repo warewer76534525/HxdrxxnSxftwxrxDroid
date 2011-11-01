@@ -77,7 +77,7 @@ public abstract class InvokeHttpPostConnection extends RoboActivity implements I
 			
 			System.out.println("Url Hit: " + urlInvoke);
 			
-			internetConnection = new InternetConnection(this);
+			internetConnection = new InternetConnection(this, this);
 			invokingThread = new Thread(new Runnable() {
 				public void run() {
 					internetConnection.postData(urlInvoke, params);

@@ -62,7 +62,7 @@ public class CustomInputText extends LinearLayout {
 //	}
 
 	public String getName() {
-		return nvp.getValue();
+		return nvp.getName();
 	}
 
 	public String getValue() {

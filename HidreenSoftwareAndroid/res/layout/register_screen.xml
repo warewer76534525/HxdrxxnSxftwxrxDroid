@@ -1,7 +1,7 @@
 
     <LinearLayout android:id="@+id/linearLayout1" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android" android:background="@drawable/white_gradation" android:orientation="vertical">
         <LinearLayout android:id="@+id/linearLayout2" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/black_gradiation" android:orientation="vertical">
-            <TextView android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20dp" android:textStyle="bold" android:text="Register" android:padding="10dp" android:layout_gravity="center"></TextView>
+            <TextView android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20dp" android:textStyle="bold" android:text="Register" android:padding="10dp" android:layout_gravity="center" android:textColor="#FFFFFF"></TextView>
         </LinearLayout>
         <ScrollView android:layout_height="wrap_content" android:id="@+id/scrollView1" android:layout_width="fill_parent">
             <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/layoutFormRegister" android:orientation="vertical"></LinearLayout>

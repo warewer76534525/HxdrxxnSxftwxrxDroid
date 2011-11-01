@@ -1,7 +1,7 @@
 
     <LinearLayout android:id="@+id/linearLayout1" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android" android:background="@drawable/white_gradation" android:orientation="vertical">
         <LinearLayout android:id="@+id/linearLayout4" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/black_gradiation" android:orientation="vertical">
-            <TextView android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20dp" android:textStyle="bold" android:textColor="#FFFFFF" android:padding="10dp" android:gravity="center" android:layout_gravity="center" android:text="AmygdalaHD" android:typeface="serif"></TextView>
+            <ImageView android:id="@+id/imageView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:padding="10dp" android:layout_gravity="center" android:src="@drawable/logo"></ImageView>
         </LinearLayout>
         <ScrollView android:layout_height="wrap_content" android:id="@+id/scrollView1" android:layout_width="fill_parent">
             <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout3" android:layout_width="match_parent" android:orientation="vertical">
@@ -14,7 +14,7 @@
                 <FrameLayout android:padding="10dp" android:id="@+id/frameLayout2" android:layout_width="fill_parent" android:layout_height="wrap_content">
                     <EditText android:inputType="textPassword" android:layout_width="fill_parent" android:hint="Password" android:layout_height="wrap_content" android:id="@+id/txtPasswordLogin"></EditText>
                 </FrameLayout>
-                <LinearLayout android:id="@+id/linearLayout2" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <LinearLayout android:id="@+id/linearLayout2" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingBottom="10dp">
                     <FrameLayout android:layout_weight="1" android:padding="5dp" android:id="@+id/frameLayout3" android:layout_width="fill_parent" android:layout_height="match_parent">
                         <Button android:text="  Login  " android:textStyle="bold" android:background="@drawable/button_green" android:layout_width="wrap_content" android:textColor="#FFFFFF" android:layout_height="wrap_content" android:layout_gravity="right" android:id="@+id/btnLogin"></Button>
                     </FrameLayout>
@@ -22,9 +22,15 @@
                         <Button android:text="Register" android:textStyle="bold" android:background="@drawable/button_orange" android:layout_width="wrap_content" android:textColor="#FFFFFF" android:layout_height="wrap_content" android:id="@+id/btnRegister"></Button>
                     </FrameLayout>
                 </LinearLayout>
-                <FrameLayout android:id="@+id/frameLayout5" android:layout_width="match_parent" android:layout_height="wrap_content">
-                    <TextView android:id="@+id/textView1" android:layout_height="wrap_content" android:padding="10dp" android:layout_width="fill_parent" android:textColor="#000000" android:text="With the same Email and Password, you can use the web application at www.amygdalahd.com"></TextView>
+                <FrameLayout android:layout_height="wrap_content" android:id="@+id/frameLayout6" android:layout_width="fill_parent" android:background="@drawable/divider">
                 </FrameLayout>
+                <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/FrameLayout02">
+                    <TextView android:textColor="#000000" android:id="@+id/TextView01" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textStyle="bold" android:paddingLeft="10dp" android:paddingRight="10dp" android:paddingTop="10dp" android:text="Note:"></TextView>
+                </FrameLayout>
+                <FrameLayout android:id="@+id/frameLayout5" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <TextView android:id="@+id/textView1" android:layout_height="wrap_content" android:padding="10dp" android:layout_width="fill_parent" android:textColor="#000000" android:text="With the same Email and Password, you can also use our web application at www.amygdalahd.com"></TextView>
+                </FrameLayout>
+                <FrameLayout android:background="@drawable/divider" android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/FrameLayout01"></FrameLayout>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

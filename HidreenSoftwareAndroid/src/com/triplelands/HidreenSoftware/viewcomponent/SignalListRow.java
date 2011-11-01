@@ -26,11 +26,17 @@ public class SignalListRow extends LinearLayout {
 		TextView txtDirection = (TextView)v.findViewById(R.id.txtDirection);
 		TextView txtPercentage = (TextView)v.findViewById(R.id.txtPercentage);
 		ImageView imgDirection = (ImageView)v.findViewById(R.id.imgDirection);
+		ImageView imgNotif = (ImageView)v.findViewById(R.id.imgNotif);
 		
 		txtSymbol.setText(signal.getSymbol());
 		txtDirection.setText((signal.isUp())? "UP":"DOWN");
 		txtPercentage.setText("" + signal.getProbability() + "%");
 		imgDirection.setImageResource((signal.isUp()) ? R.drawable.green : R.drawable.red);
+		if (signal.isUnread()){
+			imgNotif.setVisibility(View.VISIBLE);
+		} else {
+			imgNotif.setVisibility(View.GONE);
+		}
 		
 		addView(v);
 		

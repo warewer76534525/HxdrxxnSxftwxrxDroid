@@ -9,6 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.triplelands.HidreenSoftware.model.Category;
+import com.triplelands.HidreenSoftware.model.EconomicCalendar;
 import com.triplelands.HidreenSoftware.model.FeedContent;
 import com.triplelands.HidreenSoftware.model.NewsFeed;
 import com.triplelands.HidreenSoftware.model.Signal;
@@ -20,7 +21,7 @@ public class DataProcessor {
 		try {
 			obj = new JSONObject(json);
 		} catch (JSONException e) {
-			return null;
+			return "";
 		}
 		return obj.optString("status");
 	}
@@ -30,7 +31,7 @@ public class DataProcessor {
 		try {
 			obj = new JSONObject(json);
 		} catch (JSONException e) {
-			return null;
+			return "";
 		}
 		return obj.optString("message");
 	}
@@ -40,7 +41,7 @@ public class DataProcessor {
 			JSONObject obj = new JSONObject(json);
 			return obj.getString("email");
 		} catch (Exception e) {
-			return null;
+			return "";
 		}
 	}
 	
@@ -49,7 +50,7 @@ public class DataProcessor {
 			JSONObject obj = new JSONObject(json);
 			return obj.getString("session_id");
 		} catch (Exception e) {
-			return null;
+			return "";
 		}
 	}
 	
@@ -85,7 +86,7 @@ public class DataProcessor {
 			JSONObject obj = new JSONObject(fullJson);
 			return obj.optString("metasignal");
 		} catch (JSONException e) {
-			return null;
+			return "";
 		}
 	}
 
@@ -129,7 +130,8 @@ public class DataProcessor {
 					object.optString("pattern"), object.optString("symbol"),
 					object.optString("direction"),
 					object.getDouble("probability"),
-					object.getInt("comment_count"));
+					object.getInt("comment_count"),
+					object.optString("viewed"));
 		} catch (JSONException e) {
 			return null;
 		}
@@ -184,6 +186,38 @@ public class DataProcessor {
 		} catch (JSONException e) {
 			return null;
 		}
+	}
+	
+	public static List<EconomicCalendar> getEconomicCalendarList(String fullJson){
+		try {
+			JSONObject obj = new JSONObject(fullJson);
+			String ecocal = obj.optString("ecocal");
+			
+			if(ecocal.equals("false")) return null;
+		
+			List<EconomicCalendar> list = new ArrayList<EconomicCalendar>();
+			JSONArray arr = new JSONArray(ecocal);
+			for (int i = 0; i < arr.length(); i++) {
+				JSONObject object = arr.getJSONObject(i);
+				EconomicCalendar ecal = convertToEconomicCalendar(object);
+				list.add(ecal);
+			}
+			return list;
+		} catch (JSONException e) {
+			return null;
+		}
+	}
+
+	private static EconomicCalendar convertToEconomicCalendar(JSONObject object) {
+		return new EconomicCalendar(object.optString("date"), 
+				object.optString("time"), 
+				object.optString("timezone"), 
+				object.optString("currency"), 
+				object.optString("description"), 
+				object.optString("importance"), 
+				object.optString("actual"), 
+				object.optString("forecast"), 
+				object.optString("previous"));
 	}
 
 	private static FeedContent convertToFeedContent(JSONObject object) {

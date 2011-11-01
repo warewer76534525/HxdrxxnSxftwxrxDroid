@@ -94,7 +94,7 @@ public abstract class InvokeHttpGetConnection extends RoboActivity implements In
 			
 			System.out.println("Url Hit: " + urlInvoke);
 			
-			internetConnection = new InternetConnection(this);
+			internetConnection = new InternetConnection(this, this);
 			invokingThread = new Thread(new Runnable() {
 				public void run() {
 					internetConnection.setAndAccessURL(urlInvoke);

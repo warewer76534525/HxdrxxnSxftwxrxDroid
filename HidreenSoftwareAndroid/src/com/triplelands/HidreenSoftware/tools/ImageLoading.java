@@ -33,7 +33,7 @@ public class ImageLoading implements InternetConnectionHandler {
 	}
 	
 	public void start(final String url){
-		final InternetConnection internetConnection = new InternetConnection(this);
+		final InternetConnection internetConnection = new InternetConnection(activity.getBaseContext(), this);
 		Thread invokingThread = new Thread(new Runnable() {
 			public void run() {
 				internetConnection.setAndAccessURL(url);
