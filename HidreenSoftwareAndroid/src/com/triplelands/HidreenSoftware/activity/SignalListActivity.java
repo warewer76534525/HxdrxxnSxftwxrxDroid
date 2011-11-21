@@ -11,9 +11,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.triplelands.HidreenSoftware.R;
 import com.triplelands.HidreenSoftware.activity.loading.LoadingListSignals;
+import com.triplelands.HidreenSoftware.app.DataManager;
 import com.triplelands.HidreenSoftware.model.Category;
 import com.triplelands.HidreenSoftware.model.Signal;
 import com.triplelands.HidreenSoftware.viewcomponent.SignalListRow;
@@ -25,11 +27,15 @@ public class SignalListActivity extends RoboActivity {
 	
 	@InjectView(R.id.signalListLayout) LinearLayout listSignalLayout;
 	@InjectView(R.id.btnRefreshSignals) ImageButton btnRefreshSignals;
+	@InjectView(R.id.txtExpired) TextView txtExpired;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+//		Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler(this));
 		setContentView(R.layout.signal_list);
+		
+		txtExpired.setText("Account expired on: " + DataManager.getInstance(this).getAccountExpired());
 		
 		btnRefreshSignals.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -55,7 +61,6 @@ public class SignalListActivity extends RoboActivity {
 				listSignalLayout.removeAllViews();
 				@SuppressWarnings("unchecked")
 				ArrayList<Category> cats = (ArrayList<Category>) data.getExtras().getSerializable("categories");
-				System.out.println("size: " + cats.size());
 				for (int i = 0; i < cats.size(); i++) {
 					listSignalLayout.addView(new TitleLabel(this, cats.get(i).getName()));
 					List<Signal> signals = cats.get(i).getSignals();

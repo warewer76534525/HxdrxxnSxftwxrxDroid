@@ -36,6 +36,7 @@ public class RegisterActivity extends RoboActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+//		Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler(this));
 		setContentView(R.layout.register_screen);
 		
 		String json = getIntent().getExtras().getString("json");
@@ -67,7 +68,6 @@ public class RegisterActivity extends RoboActivity {
 				param.append("timezone=" + timeZone.getValue() + "&");
 				if(valid){
 					param.append("__submit=register");
-					System.out.println(param.toString());
 					Intent i = new Intent(RegisterActivity.this, RegisterPost.class);
 					i.putExtra("url", URL_REGISTER);
 					i.putExtra("params", param.toString().split("&"));

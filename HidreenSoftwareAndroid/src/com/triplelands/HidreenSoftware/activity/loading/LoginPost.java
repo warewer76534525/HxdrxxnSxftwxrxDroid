@@ -26,7 +26,6 @@ public class LoginPost extends InvokeHttpPostConnection {
 	}
 	
 	public void onReceivedResponse(InputStream is, int length) {
-		System.out.println("received response");
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(is,"UTF-8"),8);
 			StringBuilder sb = new StringBuilder();
@@ -39,10 +38,10 @@ public class LoginPost extends InvokeHttpPostConnection {
 	        Log.i("HS", data);
 	        
 	        Looper.prepare();
-	        String status = DataProcessor.getResponseStatus(data);
+	        String status = DataProcessor.getDataContent(data, "status");
 	        if (status.equals("0")) {
 	        	
-	    		new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Login Failed").setMessage(DataProcessor.getResponseMessage(data)).
+	    		new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Login Failed").setMessage(DataProcessor.getDataContent(data, "message")).
 	    		setNeutralButton("Close", new DialogInterface.OnClickListener() {
 	    			public void onClick(DialogInterface dlg, int sumthin) {
 	    				Looper.myLooper().quit();
@@ -50,9 +49,14 @@ public class LoginPost extends InvokeHttpPostConnection {
 	    		}).show();
 			} else {
 				DataManager manager = DataManager.getInstance(this);
-				manager.setEmail(DataProcessor.getEmail(data));
-				manager.setSessionId(DataProcessor.getSessionId(data));
-				Toast.makeText(LoginPost.this, DataProcessor.getResponseMessage(data), Toast.LENGTH_SHORT).show();
+				manager.setEmail(DataProcessor.getDataContent(data, "email"));
+				manager.setSessionId(DataProcessor.getDataContent(data, "session_id"));
+				manager.setName(DataProcessor.getDataContent(data, "name"));
+				manager.setCountry(DataProcessor.getDataContent(data, "country"));
+				manager.setCity(DataProcessor.getDataContent(data, "city"));
+				manager.setPhone(DataProcessor.getDataContent(data, "phone"));
+				manager.setAccountExpired(DataProcessor.getDataContent(data, "expired"));
+				Toast.makeText(LoginPost.this, DataProcessor.getDataContent(data, "message"), Toast.LENGTH_SHORT).show();
 				Intent resultIntent = new Intent();
 				setResult(RESULT_OK, resultIntent);
 				Looper.myLooper().quit();

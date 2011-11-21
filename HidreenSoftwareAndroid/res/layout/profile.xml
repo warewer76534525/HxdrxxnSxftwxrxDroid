@@ -1,0 +1,138 @@
+<LinearLayout android:id="@+id/linearLayout1"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:background="@drawable/white_gradation">
+	<RelativeLayout android:layout_height="wrap_content"
+		android:id="@+id/linearLayout2" android:layout_width="fill_parent"
+		android:background="@drawable/black_gradiation">
+		<TextView android:id="@+id/textView1" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:textStyle="bold"
+			android:textSize="20dp" android:padding="5dp" android:text="Profile" android:textColor="#FFFFFF" android:layout_centerInParent="true"></TextView>
+		<ImageView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/imageView2" android:src="@drawable/transparent_box" android:padding="5dp"></ImageView>
+	</RelativeLayout>
+	<LinearLayout android:layout_width="match_parent"
+		android:layout_height="wrap_content" android:id="@+id/linearLayout3">
+		<TextView android:id="@+id/textView2" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:padding="5dp"
+			android:textColor="#000000"
+			android:text="You are currently logged in with this account below: "></TextView>
+	</LinearLayout>
+	<ScrollView android:layout_width="match_parent"
+		android:layout_height="wrap_content" android:id="@+id/scrollView1">
+		<LinearLayout android:layout_width="match_parent"
+			android:id="@+id/linearLayout4" android:layout_height="match_parent"
+			android:orientation="vertical">
+			<LinearLayout android:layout_width="match_parent"
+				android:layout_height="wrap_content" android:id="@+id/linearLayout5"
+				android:padding="5dp">
+				<ImageView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:id="@+id/imageView1"
+					android:src="@drawable/mapoffsmall" android:padding="5dp"
+					android:layout_gravity="center"></ImageView>
+				<LinearLayout android:id="@+id/linearLayout8"
+					android:layout_width="fill_parent" android:orientation="vertical"
+					android:layout_height="wrap_content" android:layout_gravity="center">
+					<TextView android:id="@+id/textView3"
+						android:layout_width="wrap_content" android:layout_height="wrap_content"
+						android:text="Name: " android:textColor="#000000"></TextView>
+					<TextView android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:text="Name"
+						android:textColor="#000000" android:id="@+id/txtProfileName"
+						android:textSize="17dp" android:textStyle="bold"></TextView>
+				</LinearLayout>
+			</LinearLayout>
+			<FrameLayout android:id="@+id/frameLayout1"
+				android:layout_width="fill_parent" android:layout_height="1dp"
+				android:background="@drawable/divider"></FrameLayout>
+			<LinearLayout android:layout_width="match_parent"
+				android:layout_height="wrap_content" android:id="@+id/LinearLayout01"
+				android:padding="5dp">
+				<ImageView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:src="@drawable/mapoffsmall"
+					android:layout_gravity="center" android:padding="5dp" android:id="@+id/ImageView01"></ImageView>
+				<LinearLayout android:orientation="vertical"
+					android:layout_width="fill_parent" android:layout_height="wrap_content"
+					android:id="@+id/LinearLayout02" android:layout_gravity="center">
+					<TextView android:layout_height="wrap_content"
+						android:layout_width="wrap_content" android:textColor="#000000"
+						android:id="@+id/TextView02" android:text="Email:"></TextView>
+					<TextView android:layout_height="wrap_content"
+						android:layout_width="wrap_content" android:textColor="#000000"
+						android:text="Email" android:id="@+id/txtProfileEmail"
+						android:textStyle="bold" android:textSize="17dp"></TextView>
+				</LinearLayout>
+			</LinearLayout>
+			<FrameLayout android:layout_width="fill_parent"
+				android:layout_height="1dp" android:background="@drawable/divider"
+				android:id="@+id/FrameLayout01"></FrameLayout>
+			<LinearLayout android:layout_width="match_parent"
+				android:layout_height="wrap_content" android:id="@+id/LinearLayout03"
+				android:padding="5dp">
+				<ImageView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:src="@drawable/mapoffsmall"
+					android:layout_gravity="center" android:padding="5dp" android:id="@+id/ImageView02"></ImageView>
+				<LinearLayout android:orientation="vertical"
+					android:layout_width="fill_parent" android:layout_height="wrap_content"
+					android:id="@+id/LinearLayout04" android:layout_gravity="center">
+					<TextView android:layout_height="wrap_content"
+						android:layout_width="wrap_content" android:textColor="#000000"
+						android:id="@+id/TextView04" android:text="City:"></TextView>
+					<TextView android:layout_height="wrap_content"
+						android:layout_width="wrap_content" android:textColor="#000000"
+						android:textSize="17dp" android:textStyle="bold" android:text="City"
+						android:id="@+id/txtProfileCity"></TextView>
+				</LinearLayout>
+			</LinearLayout>
+			<FrameLayout android:layout_width="fill_parent"
+				android:layout_height="1dp" android:background="@drawable/divider"
+				android:id="@+id/FrameLayout02"></FrameLayout>
+			<LinearLayout android:layout_width="match_parent"
+				android:padding="5dp" android:layout_height="wrap_content"
+				android:id="@+id/LinearLayout05">
+				<ImageView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:src="@drawable/mapoffsmall"
+					android:layout_gravity="center" android:padding="5dp" android:id="@+id/ImageView03"></ImageView>
+				<LinearLayout android:orientation="vertical"
+					android:layout_width="fill_parent" android:layout_height="wrap_content"
+					android:id="@+id/LinearLayout06" android:layout_gravity="center">
+					<TextView android:layout_height="wrap_content"
+						android:layout_width="wrap_content" android:textColor="#000000"
+						android:id="@+id/TextView03" android:text="Country:"></TextView>
+					<TextView android:layout_height="wrap_content"
+						android:layout_width="wrap_content" android:textColor="#000000"
+						android:textSize="17dp" android:textStyle="bold" android:text="Country"
+						android:id="@+id/txtProfileCountry"></TextView>
+				</LinearLayout>
+			</LinearLayout>
+			<FrameLayout android:layout_width="fill_parent"
+				android:layout_height="1dp" android:background="@drawable/divider"
+				android:id="@+id/FrameLayout03"></FrameLayout>
+			<LinearLayout android:layout_width="match_parent"
+				android:padding="5dp" android:layout_height="wrap_content"
+				android:id="@+id/LinearLayout07">
+				<ImageView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:src="@drawable/mapoffsmall"
+					android:layout_gravity="center" android:padding="5dp" android:id="@+id/ImageView04"></ImageView>
+				<LinearLayout android:orientation="vertical"
+					android:layout_width="fill_parent" android:layout_height="wrap_content"
+					android:id="@+id/LinearLayout08" android:layout_gravity="center">
+					<TextView android:layout_height="wrap_content"
+						android:layout_width="wrap_content" android:textColor="#000000"
+						android:id="@+id/TextView06" android:text="Phone:"></TextView>
+					<TextView android:layout_height="wrap_content"
+						android:layout_width="wrap_content" android:textColor="#000000"
+						android:textSize="17dp" android:textStyle="bold" android:text="Phone"
+						android:id="@+id/txtProfilePhone"></TextView>
+				</LinearLayout>
+			</LinearLayout>
+			<FrameLayout android:background="@drawable/divider" android:layout_height="1dp" android:id="@+id/FrameLayout04" android:layout_width="fill_parent"></FrameLayout>
+			<LinearLayout android:layout_height="wrap_content" android:padding="5dp" android:layout_width="match_parent" android:id="@+id/LinearLayout10">
+				<ImageView android:padding="5dp" android:layout_height="wrap_content" android:layout_gravity="center" android:layout_width="wrap_content" android:src="@drawable/mapoffsmall" android:id="@+id/ImageView05"></ImageView>
+				<LinearLayout android:layout_height="wrap_content" android:orientation="vertical" android:layout_gravity="center" android:layout_width="fill_parent" android:id="@+id/LinearLayout09">
+					<TextView android:id="@+id/TextView05" android:layout_width="wrap_content" android:textColor="#000000" android:layout_height="wrap_content" android:text="Expired Date:"></TextView>
+					<TextView android:textSize="17dp" android:textStyle="bold" android:layout_width="wrap_content" android:textColor="#000000" android:layout_height="wrap_content" android:text="Expired" android:id="@+id/txtProfileExpired"></TextView>
+				</LinearLayout>
+			</LinearLayout>
+		</LinearLayout>
+	</ScrollView>
+</LinearLayout>

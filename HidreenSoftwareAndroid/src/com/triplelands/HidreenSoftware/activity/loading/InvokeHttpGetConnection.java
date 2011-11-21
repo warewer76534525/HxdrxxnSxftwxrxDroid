@@ -91,9 +91,7 @@ public abstract class InvokeHttpGetConnection extends RoboActivity implements In
 	private void invokeUrl(final String urlInvoke){
 		if(loadingDialog == null){
 			showDialog(idProgressDialog);
-			
-			System.out.println("Url Hit: " + urlInvoke);
-			
+						
 			internetConnection = new InternetConnection(this, this);
 			invokingThread = new Thread(new Runnable() {
 				public void run() {
@@ -134,7 +132,6 @@ public abstract class InvokeHttpGetConnection extends RoboActivity implements In
 			loadingDialog.incrementProgressBy(1024);
 		}
 		
-		System.out.println("progress: " + progress + " of " + total);
 		loadingDialog.setProgress(progress);
 	}
 	

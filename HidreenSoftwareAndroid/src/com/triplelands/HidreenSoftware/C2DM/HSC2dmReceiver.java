@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.util.Log;
 
 import com.triplelands.HidreenSoftware.activity.RootActivity;
-import com.triplelands.HidreenSoftware.app.DataManager;
 import com.triplelands.HidreenSoftware.utils.NotificationUtil;
 
 public class HSC2dmReceiver extends BroadcastReceiver {
@@ -38,19 +37,23 @@ public class HSC2dmReceiver extends BroadcastReceiver {
 		    	Log.d("C2DM", "INVALID_SENDER");
 		    }else if(error == "PHONE_REGISTRATION_ERROR"){
 		    	Log.d("C2DM", "PHONE_REGISTRATION_ERROR");
+		    } else {
+		    	Log.d("C2DM", error);
 		    }
 	    } else if (intent.getStringExtra("unregistered") != null) {
 	        // unregistration done, new messages from the authorized sender will be rejected
 	    	Log.i("C2DM", "unregistered");
 	    } else if (registration != null) {
 	    	Log.i("C2DM", "id: " + registration);
-	    	DataManager.getInstance(context.getApplicationContext()).setC2DMRegistrationId(registration);
+//	    	DataManager.getInstance(context.getApplicationContext()).setC2DMRegistrationId(registration);
+	    	C2dmIdRegisterer registerer = new C2dmIdRegisterer(context, registration);
+	    	registerer.start();
 	    }
 	}
 
 	private void handleMessage(Context context, Intent intent)
 	{
-		//Do whatever you want with the message
+		//Do whatever we want with the message
 		String payload = intent.getExtras().getString("payload");
 		Log.i("C2DM", "dmControl: payload = " + payload);
 		NotificationUtil.getInstance().show(context.getApplicationContext(), "AmygdalaHD - New Signal(s) Received", "New Signals", payload, RootActivity.class);

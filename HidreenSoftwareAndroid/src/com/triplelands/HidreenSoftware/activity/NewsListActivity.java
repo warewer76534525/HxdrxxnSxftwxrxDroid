@@ -30,6 +30,7 @@ public class NewsListActivity extends RoboActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+//		Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler(this));
 		setContentView(R.layout.news_list);
 		
 		loadNewsFeed();

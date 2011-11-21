@@ -24,7 +24,6 @@ public class LogoutLoading extends InvokeHttpGetConnection {
 	}
 	
 	public void onReceivedResponse(InputStream is, int length) {
-		System.out.println("received response");
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(is,"UTF-8"),8);
 			StringBuilder sb = new StringBuilder();
@@ -37,9 +36,9 @@ public class LogoutLoading extends InvokeHttpGetConnection {
 	        Log.i("HS", data);
 	        
 	        Looper.prepare();
-	        String status = DataProcessor.getResponseStatus(data);
+	        String status = DataProcessor.getDataContent(data, "status");
 	        if (status.equals("0")) {
-	    		new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Failed").setMessage(DataProcessor.getResponseMessage(data)).
+	    		new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Failed").setMessage(DataProcessor.getDataContent(data, "message")).
 	    		setNeutralButton("Close", new DialogInterface.OnClickListener() {
 	    			public void onClick(DialogInterface dlg, int sumthin) {
 	    				Looper.myLooper().quit();
@@ -47,7 +46,7 @@ public class LogoutLoading extends InvokeHttpGetConnection {
 	    		}).show();
 			} else {
 				DataManager manager = DataManager.getInstance(this);
-				manager.setSessionId("");
+				manager.logout();
 				Intent resultIntent = new Intent();
 				setResult(RESULT_OK, resultIntent);
 				Looper.myLooper().quit();

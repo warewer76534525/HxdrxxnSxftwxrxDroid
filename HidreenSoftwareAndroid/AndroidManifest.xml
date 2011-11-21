@@ -2,13 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.triplelands.HidreenSoftware"
       android:versionCode="1"
-      android:versionName="1.0">
+      android:versionName="1.0.0">
     <uses-sdk android:minSdkVersion="8" />
 
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.VIBRATE" />
+	<uses-permission android:name="com.android.email.permission.ACCESS_PROVIDER"/>
+    <uses-permission android:name="com.android.email.permission.READ_ATTACHMENT"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
 	
 	 <!-- Only this application can receive the messages and registration result -->
    <permission android:name="com.triplelands.HidreenSoftware.permission.C2D_MESSAGE" android:protectionLevel="signature" />
@@ -30,18 +34,25 @@
         <activity android:name=".activity.RegisterActivity" android:theme="@android:style/Theme.NoTitleBar"/>
 		<activity android:name=".activity.SignalListActivity" android:theme="@android:style/Theme.NoTitleBar"/>
 		<activity android:name=".activity.NewsListActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+		<activity android:name=".activity.ProfileActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+		<activity android:name=".activity.AboutActivity" android:theme="@android:style/Theme.NoTitleBar"/>
 		<activity android:name=".activity.FeedContentListActivity" android:theme="@android:style/Theme.NoTitleBar"/>
 		<activity android:name=".activity.SignalDetailActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+		<activity android:name=".activity.ChartViewerActivity" android:theme="@android:style/Theme.NoTitleBar" android:screenOrientation="landscape"/>
 		<activity android:name=".activity.ImageViewerActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+		<activity android:name=".activity.FeedbackActivity" android:theme="@android:style/Theme.NoTitleBar"/>
 		<activity android:name=".activity.NewsViewerActivity"/>
 		<activity android:name=".activity.loading.LoadingNewsList" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
 		<activity android:name=".activity.loading.LoadingFeedContent" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
     	<activity android:name=".activity.loading.LoadingListSignals" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
     	<activity android:name=".activity.loading.LoadingSignalDetail" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
     	<activity android:name=".activity.loading.LoadingRegisterForm" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+    	<activity android:name=".activity.loading.LoadingChartData" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
     	<activity android:name=".activity.loading.LoginPost" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
     	<activity android:name=".activity.loading.RegisterPost" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+    	<activity android:name=".activity.loading.LoadingAbout" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
     	<activity android:name=".activity.loading.LogoutLoading" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+    	<activity android:name=".errorhandler.BugReportActivity" android:theme="@android:style/Theme.NoTitleBar"/>
     
     	<!-- Only C2DM servers can send messages for the app. If permission is not set - any other app can generate it -->
 	      <receiver android:name=".C2DM.HSC2dmReceiver" android:permission="com.google.android.c2dm.permission.SEND">

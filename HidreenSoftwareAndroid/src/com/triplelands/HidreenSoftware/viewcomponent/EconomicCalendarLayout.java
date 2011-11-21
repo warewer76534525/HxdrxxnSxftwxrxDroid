@@ -14,6 +14,9 @@ public class EconomicCalendarLayout extends LinearLayout {
 		
 		setOrientation(VERTICAL);
 		
+		LinearLayout space = new LinearLayout(context);
+		space.setPadding(0, 10, 0, 0);
+		addView(space);
 		addView(new TitleLabel(context, title));
 		
 		for (int i = 0; i < listEcocal.size(); i++) {

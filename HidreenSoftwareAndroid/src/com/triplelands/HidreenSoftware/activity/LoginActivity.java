@@ -28,6 +28,7 @@ public class LoginActivity extends RoboActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+//		Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler(this));
 		setContentView(R.layout.login_screen);
 		final DataManager manager = DataManager.getInstance(this);
 		

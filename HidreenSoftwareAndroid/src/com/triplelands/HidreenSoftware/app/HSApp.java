@@ -9,7 +9,6 @@ import roboguice.application.RoboApplication;
 public class HSApp extends RoboApplication {
 	@Override
 	protected void addApplicationModules(List<Module> modules) {
-		System.out.println("Application executed");
 		modules.add(new HSModule());
 	}
 }

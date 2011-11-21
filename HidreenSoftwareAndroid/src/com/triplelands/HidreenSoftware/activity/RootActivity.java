@@ -27,7 +27,12 @@ public class RootActivity extends RoboTabActivity {
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+//		Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler(this));
 		setContentView(R.layout.root);
+		
+		if (DataManager.getInstance(this).getC2DMRegistrationId().equals("")) {
+			DataManager.getInstance(this).registerForC2DM(this);
+		}
 		
 		DataManager.getInstance(this).addHistory(this);
 		NotificationUtil.getInstance().clear();
@@ -39,7 +44,11 @@ public class RootActivity extends RoboTabActivity {
 		intent = new Intent().setClass(this, SignalListActivity.class);
 		setupTab(intent, "Signal", R.drawable.tab_img_selector_history);
 		intent = new Intent().setClass(this, NewsListActivity.class);
-		setupTab(intent, "News", R.drawable.tab_img_selector_setting);
+		setupTab(intent, "News", R.drawable.tab_img_selector_news);
+		intent = new Intent().setClass(this, ProfileActivity.class);
+		setupTab(intent, "Profile", R.drawable.tab_img_selector_profile);
+		intent = new Intent().setClass(this, AboutActivity.class);
+		setupTab(intent, "About", R.drawable.tab_img_selector_about);
 	}
 
 	private void setupTab(final Intent intent, final String tag, int imageId) {
@@ -79,6 +88,17 @@ public class RootActivity extends RoboTabActivity {
 	    			}
 	    		}).show();
 				
+				break;
+			case R.id.tellFriendMenu:
+				Intent i = new Intent(android.content.Intent.ACTION_SEND);
+				i.setType("text/plain");
+				i.putExtra(Intent.EXTRA_SUBJECT, "AmygdalaHD");
+				i.putExtra(Intent.EXTRA_TEXT, "Hey! I'm using AmygdalaHD for Android. It helps me a lot to make my trading decision; it's accurate! 'AmygdalaHD' is available on Android Market. Have a try!");
+				startActivity(Intent.createChooser(i, "Tell Friend via"));
+				break;
+			case R.id.sendFeedbackMenu:
+				Intent intent = new Intent(this, FeedbackActivity.class);
+				startActivity(intent);
 				break;
 		}
 		return true;

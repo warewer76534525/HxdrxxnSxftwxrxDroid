@@ -57,7 +57,7 @@ public class InternetConnection {
 //	}
 	
 	public void setAndAccessURL(String urlString) {
-		Log.i("tag", "akses mulai");
+		Log.i("tag", "akses mulai: " + urlString);
 		// while(isConnecting){
 		try {
 			if (Thread.interrupted())
@@ -85,7 +85,6 @@ public class InternetConnection {
 			int length = httpConn.getContentLength();
 
 			response = httpConn.getResponseCode();
-			System.out.println("RESPON: " + response);
 			if (response == HttpURLConnection.HTTP_OK) {
 				is = httpConn.getInputStream();
 
@@ -98,7 +97,6 @@ public class InternetConnection {
 					|| response == HttpURLConnection.HTTP_MOVED_TEMP
 					|| response == HttpURLConnection.HTTP_SEE_OTHER) {
 				String location = httpConn.getHeaderField("location");
-				System.out.println("red location " + location);
 				setAndAccessURL(location);
 			}
 			if (response != HttpURLConnection.HTTP_OK) {
@@ -139,13 +137,11 @@ public class InternetConnection {
 			
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 			for (int i = 0; i < params.length; i++) {
-				System.out.println(params[i]);
 				String name, value;					
 				String[] exploded = TextUtils.split(params[i], "=");
 				
 				name = exploded[0];
 				if(exploded.length < 2){
-					System.out.println("null value nya");
 					value = null;
 				}else{
 					value = exploded[1];
@@ -154,7 +150,6 @@ public class InternetConnection {
 				nameValuePairs.add(new BasicNameValuePair(name, value));
 			}
 			
-			System.out.println("post data");
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
 			httppost.addHeader("Content-Type",
@@ -175,7 +170,6 @@ public class InternetConnection {
 	}
 
 	public void cancel(Thread name) {
-		System.out.println("canceling connection");
 		name.interrupt();
 		try {
 			if (is != null) {

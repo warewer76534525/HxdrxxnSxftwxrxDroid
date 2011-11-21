@@ -14,6 +14,7 @@ public class ImageViewerActivity extends RoboActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+//		Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler(this));
 		setContentView(R.layout.image_viewer);
 		
 		String path = getIntent().getExtras().getString("path");

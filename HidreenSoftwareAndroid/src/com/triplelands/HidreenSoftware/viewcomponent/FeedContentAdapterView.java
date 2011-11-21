@@ -17,9 +17,7 @@ public class FeedContentAdapterView extends LinearLayout {
 		View v = inflate(context, R.layout.feeds_row, null);
 		
 		setTag(feed);
-		
-		System.out.println("Title: " + feed.getTitle());
-		
+				
 		TextView txtTitle = (TextView)v.findViewById(R.id.txtFeedTitle);
 		TextView txtFeedDate = (TextView)v.findViewById(R.id.txtFeedDate);
 		txtTitle.setText(Html.fromHtml(feed.getTitle()));

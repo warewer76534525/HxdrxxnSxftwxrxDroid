@@ -43,9 +43,9 @@ public class SignalListRow extends LinearLayout {
 		v.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				System.out.println("Clicked: " + signal.getSymbol());
 				Intent i = new Intent(context, LoadingSignalDetail.class);
 				i.putExtra("url", SignalListActivity.URL_SIGNALS + "/view/" + signal.getId());
+				i.putExtra("id", "" + signal.getId());
 				context.startActivity(i);
 			}
 		});

@@ -34,9 +34,39 @@ public class DataManager {
         editor.commit();
 	}
 	
+	public void setName(String name){
+		SharedPreferences.Editor editor = appPreference.edit();
+		editor.putString("HS_Name", name);
+        editor.commit();
+	}
+	
+	public void setCountry(String country){
+		SharedPreferences.Editor editor = appPreference.edit();
+		editor.putString("HS_Country", country);
+        editor.commit();
+	}
+	
+	public void setCity(String city){
+		SharedPreferences.Editor editor = appPreference.edit();
+		editor.putString("HS_City", city);
+        editor.commit();
+	}
+	
+	public void setPhone(String phone){
+		SharedPreferences.Editor editor = appPreference.edit();
+		editor.putString("HS_Phone", phone);
+        editor.commit();
+	}
+	
 	public void setSessionId(String sessionId){
 		SharedPreferences.Editor editor = appPreference.edit();
 		editor.putString("HS_Session", sessionId);
+        editor.commit();
+	}
+	
+	public void setAccountExpired(String expired) {
+		SharedPreferences.Editor editor = appPreference.edit();
+		editor.putString("HS_Expired", expired);
         editor.commit();
 	}
 	
@@ -58,8 +88,28 @@ public class DataManager {
 		return appPreference.getString("HS_Email", "");
 	}
 	
+	public String getName(){
+		return appPreference.getString("HS_Name", "");
+	}
+	
+	public String getCountry(){
+		return appPreference.getString("HS_Country", "");
+	}
+	
+	public String getCity(){
+		return appPreference.getString("HS_City", "");
+	}
+	
+	public String getPhone(){
+		return appPreference.getString("HS_Phone", "");
+	}
+	
 	public String getSessionId(){
 		return appPreference.getString("HS_Session", "");
+	}
+	
+	public String getAccountExpired(){
+		return appPreference.getString("HS_Expired", "");
 	}
 		
 	public boolean isLoggedIn(){
@@ -82,5 +132,13 @@ public class DataManager {
 		registrationIntent.putExtra("app", PendingIntent.getBroadcast(ctx, 0, new Intent(), 0));
 		registrationIntent.putExtra("sender", "mobile.hidreen@gmail.com");
 		ctx.startService(registrationIntent);
+	}
+	
+	public void logout(){
+		this.setSessionId("");
+		this.setName("");
+		this.setCountry("");
+		this.setCity("");
+		this.setPhone("");
 	}
 }

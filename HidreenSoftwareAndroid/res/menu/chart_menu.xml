@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:id="@+id/prevMenu"
+    	android:title="Previous Chart" 
+    	android:icon="@+drawable/prev" />
+    <item android:id="@+id/nextMenu"
+    	android:title="Next Chart" 
+    	android:icon = "@+drawable/next"
+    	/>
+</menu>

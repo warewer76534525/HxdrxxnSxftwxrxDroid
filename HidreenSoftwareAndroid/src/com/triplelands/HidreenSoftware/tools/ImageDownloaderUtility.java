@@ -23,11 +23,10 @@ public class ImageDownloaderUtility implements ImageDownloaderUtilityHandler {
 	}
 	
 	public void start(){
-		System.out.println("Starting download utility");
 		startDownload(urls[downloaded]);
 	}
 
-	private void startDownload(final String url) {
+	private void startDownload(final String url) { 
 		ImageLoading loader = new ImageLoading(act, downloaded, this);
 		loader.start(url);
 	}

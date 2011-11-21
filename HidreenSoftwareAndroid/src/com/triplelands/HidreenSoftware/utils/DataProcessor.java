@@ -15,40 +15,11 @@ import com.triplelands.HidreenSoftware.model.NewsFeed;
 import com.triplelands.HidreenSoftware.model.Signal;
 
 public class DataProcessor {
-
-	public static String getResponseStatus(String json){
-		JSONObject obj;
-		try {
-			obj = new JSONObject(json);
-		} catch (JSONException e) {
-			return "";
-		}
-		return obj.optString("status");
-	}
 	
-	public static String getResponseMessage(String json){
-		JSONObject obj;
-		try {
-			obj = new JSONObject(json);
-		} catch (JSONException e) {
-			return "";
-		}
-		return obj.optString("message");
-	}
-	
-	public static String getEmail(String json){
+	public static String getDataContent(String json, String key){
 		try {
 			JSONObject obj = new JSONObject(json);
-			return obj.getString("email");
-		} catch (Exception e) {
-			return "";
-		}
-	}
-	
-	public static String getSessionId(String json){
-		try {
-			JSONObject obj = new JSONObject(json);
-			return obj.getString("session_id");
+			return obj.getString(key);
 		} catch (Exception e) {
 			return "";
 		}
@@ -223,5 +194,34 @@ public class DataProcessor {
 	private static FeedContent convertToFeedContent(JSONObject object) {
 		return new FeedContent(object.optString("title"), object.optString("date"),
 				object.optString("link"));
+	}
+
+	public static String[] getChartUrls(String data) {
+		try {
+			JSONObject obj = new JSONObject(data);
+			JSONArray arrImg = obj.getJSONArray("chart");
+			String[] charts = new String[arrImg.length()];
+			for (int i = 0; i < arrImg.length(); i++) {
+				charts[i] = arrImg.optString(i).replaceAll(" ", "%20");
+			}
+			return charts;
+		} catch (JSONException e) {
+			return null;
+		}
+	}
+
+	public static List<BasicNameValuePair> getChartData(String data) {
+		try {
+			List<BasicNameValuePair> list = new ArrayList<BasicNameValuePair>();
+			JSONArray arr = new JSONArray(data);
+			for (int i = 0; i < arr.length(); i++) {
+				JSONObject obj = arr.getJSONObject(i);
+				list.add(new BasicNameValuePair(obj.optString("time"), obj.optString("close")));
+			}
+			return list;
+		} catch (JSONException e) {
+			return null;
+		}
+		
 	}
 }

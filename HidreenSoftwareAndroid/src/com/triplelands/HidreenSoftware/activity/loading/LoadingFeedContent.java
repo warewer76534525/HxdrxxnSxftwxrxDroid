@@ -32,7 +32,6 @@ public class LoadingFeedContent extends InvokeHttpGetConnection {
 	}
 
 	public void onReceivedResponse(InputStream is, int length) {
-		System.out.println("received response");
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(is,"UTF-8"),8);
 			StringBuilder sb = new StringBuilder();
@@ -44,9 +43,9 @@ public class LoadingFeedContent extends InvokeHttpGetConnection {
 	        String data = sb.toString();
 	        Log.i("HS", data);
 	        
-	        if (DataProcessor.getResponseStatus(data).equals("0")) {
+	        if (DataProcessor.getDataContent(data, "status").equals("0")) {
 	        	Looper.prepare();
-	        	Toast.makeText(this, DataProcessor.getResponseMessage(data), Toast.LENGTH_SHORT).show();
+	        	Toast.makeText(this, DataProcessor.getDataContent(data, "message"), Toast.LENGTH_SHORT).show();
 	        	DataManager.getInstance(this).clearAllHistory();
 				DataManager.getInstance(this).setSessionId("");
 				finish();

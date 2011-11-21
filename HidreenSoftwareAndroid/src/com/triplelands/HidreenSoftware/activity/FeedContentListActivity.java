@@ -25,7 +25,7 @@ public class FeedContentListActivity extends RoboActivity {
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+//		Thread.setDefaultUncaughtExceptionHandlesr(new UncaughtExceptionHandler(this));
 		setContentView(R.layout.feed_contents_list);
 		
 		DataManager.getInstance(this).addHistory(this);

@@ -18,7 +18,6 @@ public class UploadingToServer extends InvokeHttpPostConnection {
 	}
 
 	public void onReceivedResponse(InputStream is, int length) {
-		System.out.println("received response");
 
 		super.onReceivedResponse(is, length);
 	}

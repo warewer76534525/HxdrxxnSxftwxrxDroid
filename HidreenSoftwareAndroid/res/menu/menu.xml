@@ -1,4 +1,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 	<item android:id="@+id/logoutMenu"
     	android:title="Logout" />
+    <item android:id="@+id/tellFriendMenu"
+    	android:title="Tell a Friend" />
+    <item android:id="@+id/sendFeedbackMenu"
+    	android:title="Send Feedback" />
 </menu>

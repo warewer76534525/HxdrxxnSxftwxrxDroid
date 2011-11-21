@@ -1,0 +1,12 @@
+
+    <LinearLayout android:id="@+id/linearLayout1" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android" android:background="@drawable/white_gradation" android:orientation="vertical">
+        <FrameLayout android:id="@+id/frameLayout1" android:layout_height="wrap_content" android:layout_width="fill_parent" android:background="@drawable/black_gradiation">
+            <TextView android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#FFFFFF" android:textSize="20dp" android:textStyle="bold" android:padding="5dp" android:text="Feedback" android:layout_gravity="center"></TextView>
+        </FrameLayout>
+        <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout2" android:layout_height="wrap_content" android:orientation="vertical" android:padding="10dp">
+            <ImageView android:layout_width="wrap_content" android:id="@+id/imageView1" android:layout_height="wrap_content" android:src="@drawable/logo" android:layout_gravity="center"></ImageView>
+            <TextView android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:padding="10dp" android:textColor="#000000" android:text="Please send us your feedback for better future development. Your feedback will be sent to our support email. Thank you for using AmygdalaHD for Android."></TextView>
+            <EditText android:layout_width="fill_parent" android:layout_height="100dp" android:hint="Feedback goes here" android:gravity="top" android:id="@+id/txtFeedback"></EditText>
+            <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Send My Feedback" android:background="@drawable/button_orange" android:textStyle="bold" android:textColor="#FFFFFF" android:layout_gravity="center" android:id="@+id/btnSendFeedback"></Button>
+        </LinearLayout>
+    </LinearLayout>
