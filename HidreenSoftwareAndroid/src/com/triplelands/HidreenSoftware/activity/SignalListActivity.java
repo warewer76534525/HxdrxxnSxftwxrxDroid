@@ -7,6 +7,7 @@ import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
@@ -28,14 +29,14 @@ public class SignalListActivity extends RoboActivity {
 	@InjectView(R.id.signalListLayout) LinearLayout listSignalLayout;
 	@InjectView(R.id.btnRefreshSignals) ImageButton btnRefreshSignals;
 	@InjectView(R.id.txtExpired) TextView txtExpired;
+	@InjectView(R.id.txtLicense) TextView txtLicense;
+	@InjectView(R.id.txtFlashNews) TextView txtFlashNews;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 //		Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler(this));
 		setContentView(R.layout.signal_list);
-		
-		txtExpired.setText("Account expired on: " + DataManager.getInstance(this).getAccountExpired());
 		
 		btnRefreshSignals.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -71,6 +72,19 @@ public class SignalListActivity extends RoboActivity {
 			} catch (Exception e) {
 			}
 			
+			txtExpired.setText("Account expired on: " + DataManager.getInstance(this).getAccountExpired());
+			if (!DataManager.getInstance(this).getLicense().equals("")) {
+				txtLicense.setText("License: " + DataManager.getInstance(this).getLicense());
+			} else {
+				txtLicense.setText(Html.fromHtml("License: <i>Please logout and login again to generate your license</i>"));
+			}
+			
+			if (!DataManager.getInstance(this).getFlashNews().equals("")) {
+				txtFlashNews.setText(DataManager.getInstance(this).getFlashNews());
+				txtFlashNews.setVisibility(View.VISIBLE);
+			} else {
+				txtFlashNews.setVisibility(View.GONE);
+			}
 		}
 	}
 }

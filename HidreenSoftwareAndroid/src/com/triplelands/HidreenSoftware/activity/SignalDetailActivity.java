@@ -58,7 +58,7 @@ public class SignalDetailActivity extends RoboActivity {
 			btn.setOnClickHandler(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					Intent i = new Intent(SignalDetailActivity.this, ChartViewerActivity.class);
+					Intent i = new Intent(SignalDetailActivity.this, CandleChartViewerActivity.class);
 					i.putExtra("chartsUrl", chartUrls);
 					startActivity(i);
 				}

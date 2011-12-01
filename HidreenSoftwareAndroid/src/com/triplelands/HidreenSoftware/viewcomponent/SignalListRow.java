@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.triplelands.HidreenSoftware.R;
 import com.triplelands.HidreenSoftware.activity.SignalListActivity;
 import com.triplelands.HidreenSoftware.activity.loading.LoadingSignalDetail;
+import com.triplelands.HidreenSoftware.app.Setting;
 import com.triplelands.HidreenSoftware.model.Signal;
 
 public class SignalListRow extends LinearLayout {
@@ -43,8 +44,17 @@ public class SignalListRow extends LinearLayout {
 		v.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				Setting setting = Setting.getInstance(context);
+				String ecocal = setting.isDisplayEcocal() ? "1" : "0";
+				String ecoHigh = setting.isDisplayEcoHigh() ? "1" : "0";
+				String ecoMed = setting.isDisplayEcoMed() ? "1" : "0";
+				String ecoLow = setting.isDisplayEcoLow() ? "1" : "0";
 				Intent i = new Intent(context, LoadingSignalDetail.class);
-				i.putExtra("url", SignalListActivity.URL_SIGNALS + "/view/" + signal.getId());
+				i.putExtra("url", SignalListActivity.URL_SIGNALS + "/view/" + signal.getId() + 
+						"/" + ecocal +
+						"/" + ecoHigh +
+						"/" + ecoMed +
+						"/" + ecoLow);
 				i.putExtra("id", "" + signal.getId());
 				context.startActivity(i);
 			}

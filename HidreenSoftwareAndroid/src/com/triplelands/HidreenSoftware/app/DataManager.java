@@ -70,6 +70,24 @@ public class DataManager {
         editor.commit();
 	}
 	
+	public void setTimezone(String timezone) {
+		SharedPreferences.Editor editor = appPreference.edit();
+		editor.putString("HS_Timezone", timezone);
+        editor.commit();
+	}
+	
+	public void setLicense(String license) {
+		SharedPreferences.Editor editor = appPreference.edit();
+		editor.putString("HS_License", license);
+        editor.commit();
+	}
+	
+	public void setFlashNews(String news) {
+		SharedPreferences.Editor editor = appPreference.edit();
+		editor.putString("HS_Flash_News", news);
+        editor.commit();
+	}
+	
 	public void setC2DMRegistrationId(String id){
 		SharedPreferences.Editor editor = appPreference.edit();
 		editor.putString("HS_Reg_Id", id);
@@ -104,12 +122,24 @@ public class DataManager {
 		return appPreference.getString("HS_Phone", "");
 	}
 	
+	public String getTimezone(){
+		return appPreference.getString("HS_Timezone", "");
+	}
+	
 	public String getSessionId(){
 		return appPreference.getString("HS_Session", "");
 	}
 	
 	public String getAccountExpired(){
 		return appPreference.getString("HS_Expired", "");
+	}
+	
+	public String getLicense(){
+		return appPreference.getString("HS_License", "");
+	}
+	
+	public String getFlashNews(){
+		return appPreference.getString("HS_Flash_News", "");
 	}
 		
 	public boolean isLoggedIn(){
@@ -140,5 +170,9 @@ public class DataManager {
 		this.setCountry("");
 		this.setCity("");
 		this.setPhone("");
+		this.setC2DMRegistrationId("");
+		this.setAccountExpired("");
+		this.setLicense("");
+		this.setFlashNews("");
 	}
 }

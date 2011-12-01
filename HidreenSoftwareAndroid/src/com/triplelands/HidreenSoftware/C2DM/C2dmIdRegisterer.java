@@ -48,10 +48,10 @@ public class C2dmIdRegisterer implements InternetConnectionHandler {
 	            sb.append(line + "\n");
 	        }
 	        String data = sb.toString();
-	        Log.i("HS C2DM Register", data);
+	        //Log.i("HS C2DM Register", data + ": " + id);
 	        
 	        if (DataProcessor.getDataContent(data, "status").equals("1")) {
-	        	DataManager.getInstance(context).setC2DMRegistrationId(data);
+	        	DataManager.getInstance(context).setC2DMRegistrationId(id);
 			}
 		} catch (UnsupportedEncodingException e) {
 			Log.e("ERROR", e.getMessage());

@@ -12,11 +12,12 @@ import com.triplelands.HidreenSoftware.model.Category;
 import com.triplelands.HidreenSoftware.model.EconomicCalendar;
 import com.triplelands.HidreenSoftware.model.FeedContent;
 import com.triplelands.HidreenSoftware.model.NewsFeed;
+import com.triplelands.HidreenSoftware.model.OLHCData;
 import com.triplelands.HidreenSoftware.model.Signal;
 
 public class DataProcessor {
-	
-	public static String getDataContent(String json, String key){
+
+	public static String getDataContent(String json, String key) {
 		try {
 			JSONObject obj = new JSONObject(json);
 			return obj.getString(key);
@@ -24,7 +25,7 @@ public class DataProcessor {
 			return "";
 		}
 	}
-	
+
 	public static List<Category> getCategoryList(String fullJson) {
 		try {
 			List<Category> cats = new ArrayList<Category>();
@@ -101,8 +102,7 @@ public class DataProcessor {
 					object.optString("pattern"), object.optString("symbol"),
 					object.optString("direction"),
 					object.getDouble("probability"),
-					object.getInt("comment_count"),
-					object.optString("viewed"));
+					object.getInt("comment_count"), object.optString("viewed"));
 		} catch (JSONException e) {
 			return null;
 		}
@@ -143,7 +143,7 @@ public class DataProcessor {
 		return new NewsFeed(object.optString("id"), object.optString("name"),
 				object.optString("site"));
 	}
-	
+
 	public static List<FeedContent> getNewsFeedContents(String fullJson) {
 		try {
 			List<FeedContent> feeds = new ArrayList<FeedContent>();
@@ -158,14 +158,15 @@ public class DataProcessor {
 			return null;
 		}
 	}
-	
-	public static List<EconomicCalendar> getEconomicCalendarList(String fullJson){
+
+	public static List<EconomicCalendar> getEconomicCalendarList(String fullJson) {
 		try {
 			JSONObject obj = new JSONObject(fullJson);
 			String ecocal = obj.optString("ecocal");
-			
-			if(ecocal.equals("false")) return null;
-		
+
+			if (ecocal.equals("false"))
+				return null;
+
 			List<EconomicCalendar> list = new ArrayList<EconomicCalendar>();
 			JSONArray arr = new JSONArray(ecocal);
 			for (int i = 0; i < arr.length(); i++) {
@@ -180,20 +181,16 @@ public class DataProcessor {
 	}
 
 	private static EconomicCalendar convertToEconomicCalendar(JSONObject object) {
-		return new EconomicCalendar(object.optString("date"), 
-				object.optString("time"), 
-				object.optString("timezone"), 
-				object.optString("currency"), 
-				object.optString("description"), 
-				object.optString("importance"), 
-				object.optString("actual"), 
-				object.optString("forecast"), 
-				object.optString("previous"));
+		return new EconomicCalendar(object.optString("date"),
+				object.optString("time"), object.optString("timezone"),
+				object.optString("currency"), object.optString("description"),
+				object.optString("importance"), object.optString("actual"),
+				object.optString("forecast"), object.optString("previous"));
 	}
 
 	private static FeedContent convertToFeedContent(JSONObject object) {
-		return new FeedContent(object.optString("title"), object.optString("date"),
-				object.optString("link"));
+		return new FeedContent(object.optString("title"),
+				object.optString("date"), object.optString("link"));
 	}
 
 	public static String[] getChartUrls(String data) {
@@ -216,12 +213,30 @@ public class DataProcessor {
 			JSONArray arr = new JSONArray(data);
 			for (int i = 0; i < arr.length(); i++) {
 				JSONObject obj = arr.getJSONObject(i);
-				list.add(new BasicNameValuePair(obj.optString("time"), obj.optString("close")));
+				list.add(new BasicNameValuePair(obj.optString("time"), obj
+						.optString("close")));
 			}
 			return list;
 		} catch (JSONException e) {
 			return null;
 		}
-		
+	}
+
+	public static List<OLHCData> getCandleChartData(String data) {
+		try {
+			List<OLHCData> list = new ArrayList<OLHCData>();
+			JSONArray arr = new JSONArray(data);
+			for (int i = 0; i < arr.length(); i++) {
+				JSONObject obj = arr.getJSONObject(i);
+				list.add(new OLHCData(obj.optString("time"), 
+						Double.parseDouble(obj.optString("open")), 
+						Double.parseDouble(obj.optString("low")), 
+						Double.parseDouble(obj.optString("high")), 
+						Double.parseDouble(obj.optString("close"))));
+			}
+			return list;
+		} catch (JSONException e) {
+			return null;
+		}
 	}
 }

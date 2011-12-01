@@ -29,8 +29,8 @@ public class RootActivity extends RoboTabActivity {
 		super.onCreate(savedInstanceState);
 //		Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler(this));
 		setContentView(R.layout.root);
-		
-		if (DataManager.getInstance(this).getC2DMRegistrationId().equals("")) {
+				
+		if (!DataManager.getInstance(this).isRegisteredForPush()) {
 			DataManager.getInstance(this).registerForC2DM(this);
 		}
 		
@@ -88,6 +88,10 @@ public class RootActivity extends RoboTabActivity {
 	    			}
 	    		}).show();
 				
+				break;
+			case R.id.settingMenu:
+				Intent newIntent = new Intent(this, SettingActivity.class);
+				startActivity(newIntent);
 				break;
 			case R.id.tellFriendMenu:
 				Intent i = new Intent(android.content.Intent.ACTION_SEND);

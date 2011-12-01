@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.triplelands.HidreenSoftware"
-      android:versionCode="1"
-      android:versionName="1.0.0">
+      android:versionCode="5"
+      android:versionName="1.0.4">
     <uses-sdk android:minSdkVersion="8" />
 
 	<uses-permission android:name="android.permission.INTERNET" />
@@ -36,9 +36,11 @@
 		<activity android:name=".activity.NewsListActivity" android:theme="@android:style/Theme.NoTitleBar"/>
 		<activity android:name=".activity.ProfileActivity" android:theme="@android:style/Theme.NoTitleBar"/>
 		<activity android:name=".activity.AboutActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+		<activity android:name=".activity.SettingActivity" android:theme="@android:style/Theme.NoTitleBar"/>
 		<activity android:name=".activity.FeedContentListActivity" android:theme="@android:style/Theme.NoTitleBar"/>
 		<activity android:name=".activity.SignalDetailActivity" android:theme="@android:style/Theme.NoTitleBar"/>
 		<activity android:name=".activity.ChartViewerActivity" android:theme="@android:style/Theme.NoTitleBar" android:screenOrientation="landscape"/>
+		<activity android:name=".activity.CandleChartViewerActivity" android:theme="@android:style/Theme.NoTitleBar" android:screenOrientation="landscape"/>
 		<activity android:name=".activity.ImageViewerActivity" android:theme="@android:style/Theme.NoTitleBar"/>
 		<activity android:name=".activity.FeedbackActivity" android:theme="@android:style/Theme.NoTitleBar"/>
 		<activity android:name=".activity.NewsViewerActivity"/>
@@ -48,8 +50,10 @@
     	<activity android:name=".activity.loading.LoadingSignalDetail" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
     	<activity android:name=".activity.loading.LoadingRegisterForm" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
     	<activity android:name=".activity.loading.LoadingChartData" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+    	<activity android:name=".activity.loading.LoadingCandleChartData" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
     	<activity android:name=".activity.loading.LoginPost" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
     	<activity android:name=".activity.loading.RegisterPost" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+    	<activity android:name=".activity.loading.EditProfilePost" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
     	<activity android:name=".activity.loading.LoadingAbout" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
     	<activity android:name=".activity.loading.LogoutLoading" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
     	<activity android:name=".errorhandler.BugReportActivity" android:theme="@android:style/Theme.NoTitleBar"/>

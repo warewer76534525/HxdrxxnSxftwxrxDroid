@@ -5,9 +5,11 @@
         <TextView android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Signal" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="20dp" android:padding="5dp" android:layout_centerInParent="true"></TextView>
         <ImageButton android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_alignParentRight="true" android:id="@+id/btnRefreshSignals" android:background="@drawable/transparent_bg" android:src="@drawable/refresh" android:padding="5dp"></ImageButton>
     </RelativeLayout>
-    <FrameLayout android:layout_height="wrap_content" android:id="@+id/frameLayout2" android:layout_width="match_parent">
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/txtExpired" android:padding="5dp" android:textStyle="bold" android:textColor="#000000" android:textSize="12dp"></TextView>
-    </FrameLayout>
+    <LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout02" android:orientation="vertical" android:layout_width="fill_parent">
+        <TextView android:layout_height="wrap_content" android:id="@+id/txtExpired" android:textStyle="bold" android:textColor="#000000" android:textSize="12dp" android:layout_width="fill_parent" android:paddingBottom="2dp" android:paddingLeft="5dp"></TextView>
+        <TextView android:layout_height="wrap_content" android:layout_width="fill_parent" android:textColor="#000000" android:textSize="12dp" android:id="@+id/txtLicense" android:paddingLeft="5dp" android:paddingBottom="2dp"></TextView>
+        <TextView android:layout_height="wrap_content" android:textColor="#000000" android:textSize="12dp" android:layout_width="fill_parent" android:paddingLeft="5dp" android:paddingBottom="5dp" android:id="@+id/txtFlashNews"></TextView>
+    </LinearLayout>
     <ScrollView android:layout_width="match_parent" android:id="@+id/scrollView1" android:layout_height="wrap_content">
         <LinearLayout android:layout_width="fill_parent" android:id="@+id/signalListLayout" android:layout_height="fill_parent" android:orientation="vertical"></LinearLayout>
     </ScrollView>

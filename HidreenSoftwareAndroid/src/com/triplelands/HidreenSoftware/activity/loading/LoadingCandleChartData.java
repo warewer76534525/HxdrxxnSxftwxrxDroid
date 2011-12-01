@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
+import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,18 +14,17 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.triplelands.HidreenSoftware.app.DataManager;
-import com.triplelands.HidreenSoftware.model.Category;
+import com.triplelands.HidreenSoftware.model.OLHCData;
+import com.triplelands.HidreenSoftware.utils.ChartDataManager;
 import com.triplelands.HidreenSoftware.utils.DataProcessor;
 
-public class LoadingListSignals extends InvokeHttpGetConnection {
+public class LoadingCandleChartData extends InvokeHttpGetConnection {
 	private String url;
-	private DataManager manager;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		Bundle bundle = getIntent().getExtras();
 		if (bundle != null) {
 			url = bundle.getString("url");
-			manager = DataManager.getInstance(this);
 			super.onCreate(savedInstanceState, url);
 		}
 	}
@@ -45,20 +44,14 @@ public class LoadingListSignals extends InvokeHttpGetConnection {
 	        if (DataProcessor.getDataContent(data, "status").equals("0")) {
 	        	Looper.prepare();
 	        	Toast.makeText(this, DataProcessor.getDataContent(data, "message"), Toast.LENGTH_SHORT).show();
-	        	manager.clearAllHistory();
-				manager.setSessionId("");
+	        	DataManager.getInstance(this).clearAllHistory();
+				DataManager.getInstance(this).setSessionId("");
 				finish();
 				Looper.loop();
 			} else {
-				System.out.println("EXPIRED: " + DataProcessor.getDataContent(data, "expired"));
-				System.out.println("FLASH: " + DataProcessor.getDataContent(data, "flashnews"));
-				manager.setAccountExpired(DataProcessor.getDataContent(data, "expired"));
-				manager.setFlashNews(DataProcessor.getDataContent(data, "flashnews"));
-				
-				ArrayList<Category> categories = (ArrayList<Category>) DataProcessor.getCategoryList(data);
-		        
+				List<OLHCData> list = DataProcessor.getCandleChartData(data);
+				ChartDataManager.GetInstance().setCurrentCandleData(url, list);
 		        Intent resultIntent = new Intent();
-				resultIntent.putExtra("categories", categories);
 				setResult(RESULT_OK, resultIntent);
 			}
 		} catch (UnsupportedEncodingException e) {

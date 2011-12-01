@@ -1,0 +1,33 @@
+
+<LinearLayout android:id="@+id/linearLayout1"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:background="@drawable/white_gradation">
+	<LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout3" android:layout_width="fill_parent" android:orientation="vertical" android:background="@drawable/black_gradiation">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20dp" android:typeface="sans" android:textStyle="bold" android:textColor="#FFFFFF" android:padding="5dp" android:layout_gravity="center_horizontal" android:id="@+id/txtTitleDetail" android:text="Setting"></TextView>
+        </LinearLayout>
+	<ScrollView android:id="@+id/scrollView1" android:layout_height="fill_parent" android:layout_width="fill_parent">
+		<LinearLayout android:id="@+id/linearLayout2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="vertical">
+			<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout4">
+				<RelativeLayout android:id="@+id/relativeLayout1" android:layout_height="wrap_content" android:layout_width="fill_parent" android:paddingBottom="5dp" android:paddingLeft="5dp" android:paddingTop="5dp">
+					<TextView android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:textStyle="bold" android:textColor="#000000" android:textSize="16dp" android:text="Display Economic Calendar within Signal Detail" android:layout_toLeftOf="@+id/checkBoxEcocal" android:layout_alignParentLeft="true"></TextView>
+					<CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:id="@+id/checkBoxEcocal" android:layout_centerVertical="true"></CheckBox>
+				</RelativeLayout>
+			</LinearLayout>
+			<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:id="@+id/layoutEcoImportance" android:paddingBottom="5dp">
+				<RelativeLayout android:id="@+id/relativeLayout2" android:layout_height="wrap_content" android:layout_width="fill_parent" android:paddingLeft="15dp">
+					<TextView android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="High Importance" android:textColor="#000000" android:layout_centerVertical="true"></TextView>
+					<CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:id="@+id/checkBoxEcoHigh"></CheckBox>
+				</RelativeLayout>
+				<RelativeLayout android:layout_width="fill_parent" android:id="@+id/RelativeLayout01" android:layout_height="wrap_content" android:paddingLeft="15dp">
+					<TextView android:layout_centerVertical="true" android:layout_height="wrap_content" android:textColor="#000000" android:layout_width="wrap_content" android:id="@+id/TextView01" android:text="Medium Importance"></TextView>
+					<CheckBox android:layout_centerVertical="true" android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_alignParentRight="true" android:id="@+id/CheckBoxEcoMed"></CheckBox>
+				</RelativeLayout>
+				<RelativeLayout android:layout_width="fill_parent" android:id="@+id/RelativeLayout02" android:layout_height="wrap_content" android:paddingLeft="15dp">
+					<TextView android:layout_centerVertical="true" android:layout_height="wrap_content" android:textColor="#000000" android:layout_width="wrap_content" android:id="@+id/TextView02" android:text="Low Importance"></TextView>
+					<CheckBox android:layout_centerVertical="true" android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_alignParentRight="true" android:id="@+id/CheckBoxEcoLow"></CheckBox>
+				</RelativeLayout>
+			</LinearLayout>
+			<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/btnSaveSetting" android:layout_gravity="center" android:textColor="#FFFFFF" android:background="@drawable/button_green" android:text="     Save     "></Button>
+		</LinearLayout>
+	</ScrollView>	
+</LinearLayout>

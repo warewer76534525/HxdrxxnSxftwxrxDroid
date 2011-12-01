@@ -48,4 +48,26 @@ public class TimeZone {
 		}
 		return list;
 	}
+	
+	public static String getTimezoneString(String key){
+		for (int i = 0; i < TIME_ZONE_KEYS.length; i++) {
+			if (key.equals(TIME_ZONE_KEYS[i])) {
+				return TIME_ZONES[i];
+			}
+		}
+		return null;
+	}
+	
+	public static int getIndex(String key){
+		for (int i = 0; i < TIME_ZONE_KEYS.length; i++) {
+			if (key.equals(TIME_ZONE_KEYS[i])) {
+				return i;
+			}
+		}
+		return 0;
+	}
+	
+	public static String getKey(int index){
+		return TIME_ZONE_KEYS[index];
+	}
 }

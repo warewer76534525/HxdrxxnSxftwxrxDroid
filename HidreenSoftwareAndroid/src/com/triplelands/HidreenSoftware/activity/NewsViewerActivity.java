@@ -20,6 +20,8 @@ public class NewsViewerActivity extends RoboActivity {
 		
 		String url = getIntent().getExtras().getString("url");
 		wvNews.loadUrl(url);
+		wvNews.getSettings().setJavaScriptEnabled(true);
+		wvNews.getSettings().setPluginsEnabled(true);
 		wvNews.getSettings().setSupportZoom(true);
 		wvNews.getSettings().setBuiltInZoomControls(true);
 	}
