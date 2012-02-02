@@ -92,6 +92,8 @@ public class CandleChartViewerActivity extends RoboActivity {
 	@SuppressWarnings("unchecked")
 	private void populateChart(final List<OLHCData> listData){
 		layoutChart.removeAllViews();
+		
+		
 		TChart chart = new TChart(this){
 			int mode = 0;
         	float oldDist, tempX, tempY;
@@ -191,7 +193,7 @@ public class CandleChartViewerActivity extends RoboActivity {
 //				SLline.add(1.350, Color.RED);
 //				TPline.add(1.340, Color.RED);
 //			}
-						
+			
 			series.setLabels(times);
 			
 			chart.getPanel().setTransparent(false);
