@@ -83,7 +83,6 @@ public class LoadingSignalDetail extends InvokeHttpGetConnection implements Imag
 //		super.onReceivedResponse(is, length);
 	}
 
-	@Override
 	public void onReceivedImages(List<Bitmap> images) {
 		ImageChartManager.GetInstance().setCurrentChart(id, images);
 		goToDetailPage();
@@ -100,7 +99,6 @@ public class LoadingSignalDetail extends InvokeHttpGetConnection implements Imag
 		finish();
 	}
 
-	@Override
 	public void onError() {
 		super.onErrorConnection(null);
 	}

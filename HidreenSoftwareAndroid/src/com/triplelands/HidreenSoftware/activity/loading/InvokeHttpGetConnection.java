@@ -142,7 +142,6 @@ public abstract class InvokeHttpGetConnection extends RoboActivity implements In
 		}
 	};
 
-	@Override
 	public void onErrorConnection(Exception ex) {
 		dismissDialog(idProgressDialog);
 		loadingDialog = null;
@@ -160,7 +159,6 @@ public abstract class InvokeHttpGetConnection extends RoboActivity implements In
 		Looper.loop();
 	}
 
-	@Override
 	public void onConnectionCancelled() {
         finish();
 	}

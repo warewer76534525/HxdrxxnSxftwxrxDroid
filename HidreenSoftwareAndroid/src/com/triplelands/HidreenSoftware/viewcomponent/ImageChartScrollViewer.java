@@ -71,7 +71,6 @@ public class ImageChartScrollViewer extends HorizontalScrollView {
 //	}
 	
 	private OnClickListener listener = new OnClickListener() {
-		@Override
 		public void onClick(View v) {
 			Intent i = new Intent(context, ImageViewerActivity.class);
 			i.putExtra("path", Environment.getExternalStorageDirectory() + "/.hidreensoftware/images/" + v.getTag() + ".jpg");

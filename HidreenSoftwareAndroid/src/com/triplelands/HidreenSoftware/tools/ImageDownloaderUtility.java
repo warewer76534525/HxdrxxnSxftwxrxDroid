@@ -42,7 +42,6 @@ public class ImageDownloaderUtility implements ImageDownloaderUtilityHandler {
 			startDownload(urls[downloaded]);
 	}
 
-	@Override
 	public void onError() {
 		handler.onError();
 	}

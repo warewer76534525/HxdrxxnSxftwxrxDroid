@@ -13,7 +13,7 @@ public class NotificationUtil {
 	private NotificationManager _mNotificationManager;
 	private Notification _notifyDetails;
 	private int NOTIFICATION_ID;
-	private int _unreadNotificationNum;
+//	private int _unreadNotificationNum;
 	
 	private NotificationUtil() {
 	}
@@ -31,7 +31,7 @@ public class NotificationUtil {
 	}
 	
 	public void clear(){
-		_unreadNotificationNum = 0;
+//		_unreadNotificationNum = 0;
 		if(_mNotificationManager != null) _mNotificationManager.cancelAll();
 	}
 	
@@ -49,6 +49,6 @@ public class NotificationUtil {
 		PendingIntent intent = PendingIntent.getActivity(context, 0, notifyIntent, android.content.Intent.FLAG_ACTIVITY_NEW_TASK);
 		_notifyDetails.setLatestEventInfo(context, title, text, intent);
 		_mNotificationManager.notify(NOTIFICATION_ID, _notifyDetails);
-		_unreadNotificationNum++;
+//		_unreadNotificationNum++;
 	}
 }

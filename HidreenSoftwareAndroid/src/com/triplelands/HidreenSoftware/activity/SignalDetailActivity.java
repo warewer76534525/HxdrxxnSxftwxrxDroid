@@ -56,7 +56,6 @@ public class SignalDetailActivity extends RoboActivity {
 		if (chartUrls!= null && chartUrls.length > 0) {
 			ButtonWide btn = new ButtonWide(this, "View Charts");
 			btn.setOnClickHandler(new OnClickListener() {
-				@Override
 				public void onClick(View v) {
 					Intent i = new Intent(SignalDetailActivity.this, CandleChartViewerActivity.class);
 					i.putExtra("chartsUrl", chartUrls);

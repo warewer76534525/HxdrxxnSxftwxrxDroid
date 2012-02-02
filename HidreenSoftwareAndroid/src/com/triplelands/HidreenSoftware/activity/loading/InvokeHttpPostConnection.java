@@ -99,7 +99,6 @@ public abstract class InvokeHttpPostConnection extends RoboActivity implements I
 		return super.onCreateDialog(id);
 	}
 
-	@Override
 	public void onErrorConnection(Exception ex) {
 		dismissDialog(idProgressDialog);
 		loadingDialog = null;
@@ -117,7 +116,6 @@ public abstract class InvokeHttpPostConnection extends RoboActivity implements I
 		Looper.loop();
 	}
 
-	@Override
 	public void onConnectionCancelled() {
 		finish();
 	}

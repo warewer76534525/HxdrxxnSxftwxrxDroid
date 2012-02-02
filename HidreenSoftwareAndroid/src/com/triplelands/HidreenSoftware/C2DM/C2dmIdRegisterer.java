@@ -37,7 +37,6 @@ public class C2dmIdRegisterer implements InternetConnectionHandler {
 		invokingThread.start();
 	}
 
-	@Override
 	public void onReceivedResponse(InputStream is, int length) {
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(is,"UTF-8"),8);
@@ -63,22 +62,18 @@ public class C2dmIdRegisterer implements InternetConnectionHandler {
 		
 	}
 
-	@Override
 	public void onErrorConnection(Exception ex) {
 		
 	}
 
-	@Override
 	public void onConnectionTimeout() {
 		
 	}
 
-	@Override
 	public void onConnectionCancelled() {
 		
 	}
 
-	@Override
 	public void onConnectionResponseNotOk() {
 		
 	}

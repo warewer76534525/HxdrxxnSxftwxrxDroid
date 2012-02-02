@@ -43,7 +43,6 @@ public class ImageLoading implements InternetConnectionHandler {
 		invokingThread.start();
 	}
 
-	@Override
 	public void onReceivedResponse(InputStream is, int length) {
 		BitmapFactory.Options bmOptions;
         bmOptions = new BitmapFactory.Options();
@@ -114,25 +113,21 @@ public class ImageLoading implements InternetConnectionHandler {
 		}
 	}
 
-	@Override
 	public void onErrorConnection(Exception ex) {
 		deleteFile(dir, index + "." + "jpg");
 		handler.onError();
 	}
 
-	@Override
 	public void onConnectionTimeout() {
 		deleteFile(dir, index + "." + "jpg");
 		handler.onError();
 	}
 
-	@Override
 	public void onConnectionCancelled() {
 		deleteFile(dir, index + "." + "jpg");
 		handler.onError();
 	}
 
-	@Override
 	public void onConnectionResponseNotOk() {
 		deleteFile(dir, index + "." + "jpg");
 		handler.onError();

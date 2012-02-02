@@ -42,7 +42,6 @@ public class SignalListRow extends LinearLayout {
 		addView(v);
 		
 		v.setOnClickListener(new OnClickListener() {
-			@Override
 			public void onClick(View v) {
 				Setting setting = Setting.getInstance(context);
 				String ecocal = setting.isDisplayEcocal() ? "1" : "0";
